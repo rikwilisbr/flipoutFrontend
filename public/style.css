@@ -1,0 +1,1243 @@
+* {
+    font-family: 'Roboto', sans-serif;;
+    overflow: hidden;
+}
+
+/* Login and register */
+
+.entry-form{
+    display: block;
+    margin: 1rem auto;
+}
+
+.entry-form-register{
+    display: block;
+    margin: 1rem auto;
+}
+
+.entry-form{
+    display: block;
+    margin: 1rem auto;
+}
+
+.entry-form-register {
+    padding: 0;
+}
+
+.register-form-1{
+    text-align: end;
+}
+
+.register-form-2{
+    text-align: start;
+}
+
+.entry-input{
+     border-radius: 1rem;
+     height: 4rem;
+     width: 22rem;
+     padding: 1rem;
+     background-color: #191919;
+     border: none;
+     outline: none;
+     color: white;
+}
+
+.entry-pass-p {
+    margin-right: 14.5rem;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+}
+
+.entry-email-p {
+    margin-right: 16.5rem;
+    margin-bottom: 0rem;
+}
+
+.entry-register-p {
+    margin-top: 1rem;
+    margin-left: 6.5rem;
+    margin-bottom: 0rem;
+    text-align: start;
+}
+
+.entry-register-p-2 {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    text-align: start;
+}
+
+.entry-btn{
+    background: rgb(149,1,1);
+    background: -moz-linear-gradient(90deg, rgba(149,1,1,1) 0%, rgba(255,0,0,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(149,1,1,1) 0%, rgba(255,0,0,1) 100%);
+    background: linear-gradient(90deg, rgba(149,1,1,1) 0%, rgba(255,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#950101",endColorstr="#ff0000",GradientType=1);
+
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    height: 4rem;
+    width: 12rem;
+    color: white;
+    border-radius: 5rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: all .2s ease-in-out;
+
+}
+
+.entry-btn:hover{
+    transform: scale(1.1);
+}
+
+
+.side-paper{
+    background-color: #191919;
+    color: white;
+    height: 100vh
+}
+
+.logo{
+    height:auto ;
+    width: 12rem;
+    object-fit: contain;
+    display: block;
+    margin: 3rem auto;
+}
+
+.register-call{
+    margin-top: 20vh;
+    
+}
+
+.welcome-side-paper{
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.register-call-message{
+    font-size: 25px;
+    font-weight:light
+    
+}
+
+.register-button{
+    background-color: transparent;
+    border: solid white 2px;
+    height: 4rem;
+    width: 12rem;
+    color: white;
+    border-radius: 5rem;
+}
+
+.register-button a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;  
+}
+
+.login-paper {
+    display: block;
+    margin: 15vh auto;
+    height: 100vh;
+}
+
+.register-paper {
+    display: block;
+    margin: 5vh auto;
+}
+
+.login-paper h1 {
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+.login-paper-p {
+    font-size: 1.3em;
+    font-weight: 300;
+}
+
+.login-paper a {
+    text-decoration: underline;
+    color: #191919;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+
+/* home page */
+
+.main-section{
+    overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 0px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav{
+    padding-top: 0.5rem;
+    background-color: #191919;
+    padding-left: 2rem;
+}
+
+.nav a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1rem;
+    
+}
+
+.nav a:hover{
+    color: gray;
+ 
+    
+}
+
+
+.main-section{
+    border-right: 1px solid rgb(197, 197, 197);
+    height: 100vh;
+    padding: 0;
+}
+
+.home-title{
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    width: 100%;
+}
+
+.home-title h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.postContainer {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 0.5rem solid rgb(230, 236, 240);
+}
+
+.profilePicPOST{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    margin-right: 0.5rem;
+}
+
+.profilePicPOST img{
+    width: 100%;
+}
+
+.postArea {
+    flex: 1;
+    width: 100%;
+}
+
+.postAreaText {
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding-left: 1rem;
+    overflow: auto;
+    overflow-y: scroll;
+}
+
+.postArea button {
+    background-color: red;
+    border: none;
+    height: 2.2rem;
+    width: 5rem;
+    color: white;
+    border-radius: 5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all .2s ease-in-out;
+    margin-left: 0.5rem;
+    margin-bottom: 0.2rem;    
+}
+
+.postArea button:disabled {
+    background-color: rgba(255, 0, 0, 0.452)
+}
+
+.postArea button:hover {
+    transform: scale(1.05)
+}
+
+.post{
+    border-bottom: 1px solid rgb(197, 197, 197); ;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 1rem;
+    flex-shrink: 0;
+    transition: all .1s ease-in-out;
+}
+
+.post:hover{
+    background-color: rgb(236, 234, 234);
+}
+
+.post span, a{
+    margin-right: 0.3rem;
+}
+
+.mainContentContainer{
+    flex: 1;
+    display: flex;
+    flex-direction:row
+}
+
+.postContentContainer{
+    margin-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    
+}
+
+.postBody{
+    white-space: pre-line !important;
+    overflow-wrap: break-word;
+
+}
+
+.postHeader a{
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+    
+}
+
+.postHeader a:hover{
+    text-decoration: underline;
+   
+}
+
+.postHeader span{
+    color: rgb(139, 139, 139);
+}
+
+.postFooter{
+    display: flex;
+    align-items: center;
+}
+
+.col-10{
+    margin: 0;
+}
+
+
+.postFooter .postButtonContainer{
+    padding-right: 2rem;
+}
+
+.postButtonContainer button{
+    border-radius: 100%;
+    border: none;
+    background: transparent;
+    height: 2rem;
+    transition: all .1s ease-in;
+    color: rgba(0,0,0,0.34);
+}
+
+.comment-btn:hover{
+    background-color: #18749862;
+    color: #187498;
+
+}
+
+.repost-btn:hover{
+    background-color: #36ae7c56;
+    color: #36AE7C;
+}
+
+.like-btn:hover{
+    background-color: #eb535381;
+    color: #EB5353;
+}
+
+.delete-btn:hover{
+    color: rgba(0, 0, 0, 0.623);
+    background-color: rgba(0,0,0,0.34);;
+}
+
+.like-btn-red{
+    color: #EB5353 !important;
+}
+
+.likeNumber{
+    color: rgba(0,0,0,0.34);
+    font-size: 0.9rem;
+    margin-left: -0.1rem;
+}
+
+.likeNumber-red{
+    color: #EB5353;
+    font-size: 0.9rem;
+    margin-left: -0.1rem;
+}
+
+.repost-btn-green{
+    color: #36AE7C !important;
+}
+
+.repostNumber{
+    color: rgba(0,0,0,0.34);
+    font-size: 0.9rem;
+    margin-left: -0.1rem;
+}
+
+.repostNumber-green{
+    color: #36AE7C;
+    font-size: 0.9rem;
+    margin-left: -0.1rem;
+}
+
+.postActionContainer{
+    padding-left: 4.5rem;
+    color: rgba(0, 0, 0, 0.658);
+}
+
+
+
+.postActionContainer span{
+    font-size: 0.9rem;
+    font-weight: bold;
+    
+}
+
+.postActionContainer a{
+    color: rgba(0, 0, 0, 0.658);
+    text-decoration: none;
+}
+
+.postActionContainer a:hover{
+    text-decoration: underline;
+}
+
+.replyPostButton{
+    background-color: #EB5353;
+    border: none;
+    height: 2.2rem;
+    width: 5rem;
+    color: white;
+    border-radius: 5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all .2s ease-in-out;
+    margin-bottom: 0.2rem;
+}
+
+.replyPostButton:disabled {
+    background-color: #eb535379;
+}
+
+.replyPostButton:hover {
+    transform: scale(1.05)
+}
+
+.modal {
+    cursor:default;
+}
+
+.btn-close:focus{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+.replyAreaText{
+    width: 100%;
+    resize: none;
+    border: none;
+    background-color: #191919;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    outline: none;
+    font-size: 1rem;
+    padding-left: 1rem;
+    overflow: auto;
+    overflow-y: scroll;
+    color: white;
+}
+
+.modal-footer{
+    padding-left: 0.5rem;
+    
+}
+
+.postReplyContainer {
+    display: flex;
+    padding: 1rem;
+}
+
+.cancelReplyButton{
+    background-color: rgb(83, 83, 83);
+    border: none;
+    height: 2.2rem;
+    width: 5rem;
+    color: white;
+    border-radius: 5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all .2s ease-in-out;
+    margin-bottom: 0.2rem;
+}
+
+.cancelReplyButton:hover {
+    transform: scale(1.05)
+}
+
+.back-arrow{
+    float: left;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.postContainerReply {
+    display: flex;
+    padding: 1rem;
+    border-top: 0.5rem solid rgb(197, 197, 197);
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.profileHeaderContainer{
+    position: relative;
+}
+
+.profileHeaderContainer .coverPhotoSection{
+    background-color:  #657786;
+    height: 12rem;
+}
+
+.profileHeaderContainer .userImageContainer{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileHeaderContainer .userImageContainer img{
+    
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 100%;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    margin-top: 8rem;
+    border: 4px solid white;
+
+}
+
+.profileHeaderContainer .profileButtonsContainer{
+    text-align: right;
+    margin-right: 1.5rem; 
+}
+
+.profileMessageButton{
+    border: 1px solid #EB5353;
+    border-radius: 2rem;
+    padding: 0.1rem;
+    height: 2rem;
+    width: 3rem;
+    background-color: white;
+    color: #EB5353;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: all .2s ease-in-out;
+}
+
+.profileMessageButton:hover{
+    background-color: #eb535349;
+}
+
+.profileFollowButton{
+    border: none;
+    border-radius: 2rem;
+    padding: 0.1rem;
+    height: 2rem;
+    width: 6rem;
+    background-color: #EB5353;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    transition: all .2s ease-in-out;
+}
+
+.profileFollowButton:hover{
+    background-color: red;
+}
+
+.profileFollowingButton{
+    border: solid 1px #EB5353;
+    border-radius: 2rem;
+    padding: 0.1rem;
+    height: 2rem;
+    width: 6rem;
+    background-color: white;
+    font-weight: bold;
+    color: #EB5353;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    transition: all .2s ease-in-out;
+}
+
+.profileFollowingButton:hover{
+    background-color: #eb535349;
+}
+
+.profileEditButton{
+    border: none;
+    border-radius: 2rem;
+    padding: 0.1rem;
+    height: 2rem;
+    width: 7rem;
+    background-color: #363636;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    transition: all .2s ease-in-out;
+}
+
+
+
+
+.profileHeaderContainer .profileUserDetails{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 0;
+    border-bottom: 1px solid rgb(197, 197, 197) ;
+}
+
+.displayName{
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: -0.2rem;
+    margin-left: 1.5rem;
+}
+
+.displayUsername{
+   color: rgb(139, 139, 139);
+   font-size: 1rem;
+   margin-top: -5px;
+   margin-left: 1.5rem;
+}
+
+.followsContainer {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+.followsContainer a{
+    text-decoration: none;
+    color: black
+}
+
+.followsContainer a:hover{
+    text-decoration: underline;
+    text-decoration-color: rgb(61, 61, 61);
+}
+
+.followsContainer .value{
+    margin-right: 3px;
+    font-weight: bold;
+
+}
+
+.followsContainer .followers{
+    margin-left: 0.5rem;
+
+}
+
+.followsContainer .valueName{
+    color: rgb(61, 61, 61);
+}
+
+.tabText{
+    color: black !important;
+    transition: all .2s ease-in-out;
+}
+
+
+
+.tabText:hover{
+    background-color: rgb(236, 234, 234);
+}
+
+.followTabs {
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.resultsContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.resultsContainer .followProfile{
+    padding: 0.7rem;
+    display: flex;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.followPostHeader{
+    margin-top: 0.8rem;
+    margin-left: 0.3rem;
+}
+
+
+.followPageContainer{
+    text-align: right;
+    display: block;
+    flex: 1;
+    margin-right: 1rem; 
+    margin-top: 0.5rem;
+}
+
+.followPageButton{
+    border: none;
+    border-radius: 2rem;
+    padding: 0.1rem;
+    height: 2rem;
+    width: 7rem;
+    background-color: #EB5353;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    transition: all .2s ease-in-out;
+}
+
+.followPageButton:hover{
+    background-color: red;
+}
+
+.profilePictureButton{
+    position: absolute;
+    color: rgba(0, 0, 0, 0.623);
+    background-color: transparent;
+    margin-top: 8.5rem;
+    border: none;
+    margin-left: 0.3rem;
+    display: none;
+}
+
+.coverPhotoButton{
+    position: absolute;
+    color: rgba(0, 0, 0, 0.623);
+    background-color: transparent;
+    margin-top: 11.5rem;
+    border: none;
+    margin-left: 0.3rem;
+    display: none;
+}
+
+.userImageContainer:hover .profilePictureButton,
+.coverPhotoSection:hover .coverPhotoButton{
+    display: block;
+}
+
+.coverPhotoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coverPhotoContainer img{
+    width: 100%;
+    object-fit: cover;
+    height: 94%;
+    position: absolute;
+}
+
+.searchBarContainer{
+    position: relative;
+    padding: 0.5rem 0.5rem;
+}
+
+.searchIcon {
+    position: absolute;
+    color: #657786;
+    margin-top: 4px;
+    margin-left: 0.552rem;
+}
+
+.searchBarContainer #searchBox {
+    width: 98%;
+    height: 2rem;
+    padding: 5px 15px 5px 40px;
+    border-radius: 1rem;
+    z-index: -1;
+    background-color: rgb(236, 234, 234);
+    border: none;
+    outline: none;
+    color: #616161;
+}
+
+.messageHeader{
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    width: 100%;
+    display: flex;
+}
+
+.messageHeader h1{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.new-message{
+    color: rgb(139, 139, 139);
+    cursor: pointer;
+}
+
+.addButtonContainer{
+    display: flex;
+    margin-right: 1rem;
+    margin-top: 0.3rem;
+}
+
+.messageHeaderItemsContainer{
+    display: flex;
+    flex: 1;
+}
+
+.chatPageContainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.chatTitleBar{
+    border-bottom: 1px solid rgb(197, 197, 197);
+    display: flex;
+    align-items: center;
+    min-height: 4rem;
+    padding: 0.5rem;
+}
+
+.chatTitleBar label{
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+#userSearchTextBox {
+    border: none;
+    flex: 1;
+    outline: none;
+    font-weight: 400;
+    min-width: 350px;
+}
+
+#createChatButton{
+    background-color: red;
+    color: white;
+    padding: 0.45rem 1rem;
+    border: none;
+    margin: 0.5rem auto;
+    border-radius: 2rem;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#createChatButton:hover{
+    transform: scale(1.05);
+}
+
+#createChatButton:disabled{
+    background-color: rgba(255, 0, 0, 0.452);
+    cursor: default;
+}
+
+.messageNewPageButton{
+    height: 2rem;
+    width: 4.5rem;
+    border: solid 1px #EB5353;
+    border-radius: 2rem;
+    padding: 0.1rem;
+    background-color: white;
+    font-weight: bold;
+    color: #EB5353;
+    display: inline-block;
+    transition: all .2s ease-in-out;
+}
+
+.messageNewPageButton:hover{
+    background-color: #eb535349;
+}
+
+.selectedUser{
+    background-color: #eb535349;
+    color: red;
+    padding: 0.25rem;
+    border-radius: 3px;
+    margin: 0.25rem 0.25rem 0 0;
+}
+
+.chatListItem{
+    color: #363636;
+    padding: 0.7rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    cursor: pointer;
+    display: flex;
+}
+
+.chatListItem:hover{
+    background-color: rgb(236, 234, 234);
+}
+
+.chatListItemContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.chatListItemContainer .chatListHeading{
+    font-weight: bold;
+}
+
+.chatListItemContainer .chatListSubText{
+    color: #657786;
+    font-size: 0.9rem;
+}
+
+.chatListItem img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.chatListImageContainer{
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.groupChatImage img{
+    height: 65%;
+    width: 65%;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    border: 2px solid white;
+}
+
+.groupChatImage img:first-of-type{
+    top: 0;
+    right: 0;
+}
+
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatTitleBarContainer{
+    border-bottom: 1px solid rgb(197, 197, 197);
+    display: flex;
+    align-items: center;
+    padding: 0.7rem;
+
+}
+
+#chatName{
+    width: 100%;
+    color: #363636;
+    border: 1px solid transparent;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+#chatName:hover{
+    border: 1px solid rgb(179, 179, 179);
+    
+}
+
+.chatContainer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.chatMessages{
+    overflow-y:auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    height: 73vh;
+    background-color: #363636;
+    background-image: url('https://i.imgur.com/inre1bS.png');
+}
+
+.chatMessages::-webkit-scrollbar {
+    display: none;
+  }
+
+.chatContainer .chatFooter{
+    display: flex;
+    padding: 0.7rem;
+    border-top: 1px solid rgb(197, 197, 197);
+}
+
+.chatContainer .chatFooter textarea{
+    resize: none;
+    padding: 10px 15px 5px 1rem;
+    border-radius: 0.5rem;
+    background-color: rgb(225, 226, 226);
+    border: none;
+    outline: none;
+    color: black;
+    max-height: 10rem;
+    width: 95% !important;
+    margin-right: 0.3rem;
+    overflow-y: auto;
+}
+
+.chatContainer .chatFooter button{
+    background-color: #EB5353;
+    border: none;
+    color: white;
+    border-radius: 100%;
+    text-align: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding-left: 10px;  
+    transition: all .15s ease-in-out;
+    margin-top: 0.8rem;
+}
+
+.chatContainer .chatFooter button:hover{
+    background-color: red;
+}
+
+.chatImagesContainer{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-left: -1rem;
+}
+.chatImagesContainer img{
+    width:3rem;
+    height: 3rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-left: -1rem;
+    position: relative;
+    
+}
+
+.chatImagesContainer img:first-of-type{
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-left: 1rem;
+    position: relative;
+}
+
+.chatImagesContainerSingle img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 3.2rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.chatNameChangeInput{
+    width: 98%;
+    height: 3rem;
+    padding: 5px 15px 5px 1rem;
+    border-radius: 1rem;
+    background-color: rgb(236, 234, 234);
+    border: none;
+    outline: none;
+    color: black;
+    
+}
+
+.chatModalBody{
+    height: 8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatMessages .userMessage{
+    padding-bottom: 2px;
+    list-style: none;
+    display: flex;
+    justify-content: end;
+    flex: 1;
+}
+
+.chatMessages .userMessage .messageContainer{
+    background-color: lightcoral;
+    color: white;
+    margin-top: 0.2rem;
+    border-radius: 1.5rem 5px 5px 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    margin-right: 0.5rem;
+    white-space: pre-line !important;
+    overflow-wrap: break-word;
+    max-width: 25rem;
+}
+
+.chatMessages .userMessage.isFirst .messageContainer{
+    border-radius: 1.5rem 1.5rem 5px 1.5rem;
+}
+
+.chatMessages .userMessage.isLast .messageContainer{
+    border-radius: 1.5rem 5px 1.5rem 1.5rem;
+}
+
+.chatMessages .userMessage.isFirst.isLast .messageContainer{
+    border-radius: 1.5rem;
+}
+
+.chatMessages .notUserMessage{
+    padding-bottom: 2px;
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.chatMessages .notUserMessage.isLast{
+    margin-bottom: 1rem;
+}
+
+.chatMessages .notUserMessage .messageContainer{
+    background-color: #ffff;
+    margin-top: 0.2rem;
+    margin-left: 0.5rem;
+    border-radius: 5px 1.5rem 1.5rem 5px;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    white-space: pre-line !important;
+    overflow-wrap: break-word;
+    max-width: 25rem;
+    width: max-content;
+    margin-left: 2.5rem;
+}
+
+.chatMessages .notUserMessage.isFirst .messageContainer{
+    border-radius: 1.5rem 1.5rem 1.5rem 5px;
+}
+
+.chatMessages .notUserMessage.isLast .messageContainer{
+    border-radius: 5px 1.5rem 1.5rem 1.5rem;
+}
+
+.chatMessages .notUserMessage.isFirst.isLast .messageContainer{
+    border-radius: 1.5rem
+}
+
+.chatMessages .notUserMessage.isLast .messageContainer{
+    margin-left: 0.5rem;
+}
+
+.chatMessages .userMessage .messageUserName{
+   display: none;
+}
+
+.chatMessages .notUserMessage .messageUserName{
+    color: white;
+    font-weight: bolder;
+    font-size: 12px;
+    margin-left: 3rem;
+}
+
+.chatMessages .notUserMessage.isLast .messageUserName{
+    margin-left: 1rem;
+}
+
+.chatMessages .messageMainContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.chatMessages .messageMainContainer .userPhoto{
+    display: none;
+}
+
+.chatMessages .messageMainContainer .notUserPhoto{
+    position: relative;
+}
+
+.chatMessages .messageMainContainer .notUserPhoto .messagePhoto{
+    border-radius: 100%;
+    max-width: 100%;  
+    height: 2rem;
+    width: 2rem;
+    margin-top: 0.5rem;
+}
+
+.chatMessages .messageMainContainer .notUserPhoto .messagePhoto.isFirst{
+    border-radius: 100%;
+    max-width: 100%;  
+    height: 2rem;
+    width: 2rem;
+    margin-top: 2rem; 
+}
+
+.typingMessage{
+    display: block;
+    position: absolute;
+    margin-top: 2.5rem;
+    margin-left: 5.75rem;
+    color: #657786;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
