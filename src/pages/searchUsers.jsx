@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 //material ui icons
 import SearchIcon from '@mui/icons-material/Search';
@@ -40,7 +41,7 @@ export default function SearchUsers() {
           }
         }
     
-        const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+        const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
         const myHome =  homeRes.data
         
         if (myHome) setUser(myHome)
@@ -50,7 +51,7 @@ export default function SearchUsers() {
 
       useEffect(() => {
         try {
-          axios.get('http://localhost:2000/isAuth', {
+          axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -75,7 +76,7 @@ export default function SearchUsers() {
           return
         } else {
           const newTxt = txt.replace('@','')
-          axios.get('http://localhost:2000/api/search/users/?username='+newTxt)
+          axios.get(process.env.REACT_APP_APIURL+'/api/search/users/?username='+newTxt)
           .then(response=>{
             setFoundUsers(response.data)
           })
@@ -149,6 +150,9 @@ export default function SearchUsers() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

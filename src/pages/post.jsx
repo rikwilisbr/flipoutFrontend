@@ -9,6 +9,7 @@ import EntryPost from '../components/EntryPost';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import { TextareaAutosize } from '@mui/material';
+import MobileNav from '../components/mobileNav';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -168,12 +169,12 @@ export default function Post() {
         }
       }
   
-      const postRes = await axios('http://localhost:2000/api/reply/'+postid, fetchConfig)
+      const postRes = await axios(process.env.REACT_APP_APIURL+'/api/reply/'+postid, fetchConfig)
       const myPosts = postRes.data
   
       if(myPosts) setCommentPosts(myPosts)
   
-      const mainPost = await axios.get('http://localhost:2000/posts/'+postid , fetchConfig)
+      const mainPost = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+postid , fetchConfig)
       const myMainPost = mainPost.data
   
       if(mainPost.data.length === 0){
@@ -183,7 +184,7 @@ export default function Post() {
         setMainPost(myMainPost)
       }
 
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -193,7 +194,7 @@ export default function Post() {
     
     useEffect(() => {
       try {
-        axios.get('http://localhost:2000/isAuth', {
+        axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -247,7 +248,7 @@ export default function Post() {
             replyToUserId: mainPost[0].postedBy_id
         }
 
-        await axios.post('http://localhost:2000/api/reply',data, {
+        await axios.post(process.env.REACT_APP_APIURL+'/api/reply',data, {
         headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -351,6 +352,9 @@ export default function Post() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

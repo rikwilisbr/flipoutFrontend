@@ -41,7 +41,7 @@ export default function Register() {
      if(firstPass === secondPass){
         const data_ = formData;
 
-        fetch('http://localhost:2000/register', {
+        fetch(process.env.REACT_APP_APIURL+'/register', {
           method: 'POST',
           crossDomain: true,
           headers:{
@@ -66,7 +66,7 @@ export default function Register() {
   }
 
   return (
-    <div className='container-fluid login-page'>
+    <div className='container-fluid register-page'>
     <div className="row">
     <div className="col-4 side-paper">
         <img src='https://i.imgur.com/wMyGVWw.png' className="logo"/>
@@ -78,11 +78,11 @@ export default function Register() {
     </div>
     <div className="col-8 register-paper text-center">
         <h1>Register to FlipOut</h1>
-        <p className="login-paper-p">Create your account now!</p>
+        <span className="login-paper-p">Create your account now!</span>
         <p style={{color: 'red'}}>{errorMessage}</p>
             <div className='inputs'>
               <form className='entry-form-register container' onSubmit={(e)=> e.preventDefault()}>
-                <div className='row'>
+                <div className='register-inputs row'>
                   <div className='col-6 register-form-1'>
                     <div>
                     <p className="entry-register-p">Your first name:</p>
@@ -115,9 +115,16 @@ export default function Register() {
                     <input className='entry-input' type='password' placeholder='confirm password' onChange={(e) => setSecondPass(e.target.value)} required></input>
                     </div>
                   </div>
-                </div>  
-                  <button className='btn btn-dark entry-btn' onClick={ checkingPass } disabled={emailCheck}> Register </button>
+                </div>
+                <div>
+                <button className='btn btn-dark register-entry-btn' onClick={ checkingPass } disabled={emailCheck}> Register </button>
+                </div>
+                  
               </form>
+            </div>
+            <div className="mobileSingIn">
+                        <span>Already have a account? </span>
+                        <a href='/login'>Sing in</a>
             </div>
     </div>
     </div>

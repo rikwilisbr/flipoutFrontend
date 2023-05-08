@@ -9,6 +9,7 @@ import EntryPost from '../components/EntryPost';
 import SideNav from '../components/SideNav';
 import { TextareaAutosize } from '@mui/material';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 
 export default function Home() {
@@ -165,12 +166,12 @@ export default function Home() {
       }
     }
 
-    const postRes = await axios('http://localhost:2000/api/post', fetchConfig)
+    const postRes = await axios(process.env.REACT_APP_APIURL+'/api/post', fetchConfig)
     const myPosts = postRes.data
 
     if(myPosts) setPosts(myPosts)
 
-    const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+    const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
     const myHome =  homeRes.data
     
     if (myHome) setUser(myHome)
@@ -180,7 +181,7 @@ export default function Home() {
   
   useEffect(() => {
     try {
-      axios.get('http://localhost:2000/isAuth', {
+      axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -228,7 +229,7 @@ export default function Home() {
         content: inputText,
         postedBy: postedBy
       }
-      await axios.post('http://localhost:2000/api/post', data, {
+      await axios.post(process.env.REACT_APP_APIURL+'/api/post', data, {
       headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -294,6 +295,9 @@ export default function Home() {
              <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

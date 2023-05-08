@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 
 //material ui icons
@@ -52,9 +53,9 @@ function FollowersPage() {
       }
     }
 
-    const followersid = await axios('http://localhost:2000/api/followers/ids/'+username, fetchConfig)
+    const followersid = await axios(process.env.REACT_APP_APIURL+'/api/followers/ids/'+username, fetchConfig)
     const myFollowersId =  followersid.data
-    fetch('http://localhost:2000/api/followers/data/'+username,{
+    fetch(process.env.REACT_APP_APIURL+'/api/followers/data/'+username,{
       method: 'GET',
       crossDomain: true,
       headers: {
@@ -71,7 +72,7 @@ function FollowersPage() {
     
     if (myFollowersId) setIds(myFollowersId)
 
-    const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+    const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
     const myHome =  homeRes.data
     
     if (myHome) setUser(myHome)
@@ -81,7 +82,7 @@ function FollowersPage() {
   
   useEffect(() => {
     try {
-      axios.get('http://localhost:2000/isAuth', {
+      axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -153,6 +154,9 @@ function FollowersPage() {
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
               <ThirdSide userId={user.id}/>
           </div>
+      </div>
+      <div className='row'>
+            <MobileNav username={user.username} />
       </div>
     </div>
   )

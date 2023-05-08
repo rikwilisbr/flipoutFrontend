@@ -17,6 +17,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 //components
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 export default function PageNotFound() {
   const navigate = useNavigate()
@@ -41,7 +42,7 @@ export default function PageNotFound() {
         }
       }
   
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -49,7 +50,7 @@ export default function PageNotFound() {
 
     useEffect(() => {
       try {
-        axios.get('http://localhost:2000/isAuth', {
+        axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -86,6 +87,9 @@ export default function PageNotFound() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

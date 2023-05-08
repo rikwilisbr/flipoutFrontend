@@ -6,7 +6,7 @@ import axios from 'axios';
 //components
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
-
+import MobileNav from '../components/mobileNav';
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -34,7 +34,7 @@ export default function InboxNewPage() {
         }
       }
   
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -49,7 +49,7 @@ export default function InboxNewPage() {
       return
     } else {
       const newTxt = txt.replace('@','')
-      axios.get('http://localhost:2000/api/search/users/?username='+newTxt)
+      axios.get(process.env.REACT_APP_APIURL+'/api/search/users/?username='+newTxt)
       .then(response=>{
         const data = response.data
         const arr = []
@@ -85,7 +85,7 @@ export default function InboxNewPage() {
       getActiveButton()
     }
 
-    const userRes = await axios.get('http://localhost:2000/home', {
+    const userRes = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -112,7 +112,7 @@ export default function InboxNewPage() {
       }
     }
 
-    await axios.post('http://localhost:2000/api/chat', data, fetchConfig).then((response) =>{
+    await axios.post(process.env.REACT_APP_APIURL+'/api/chat', data, fetchConfig).then((response) =>{
       console.log(response.data)
       navigate('/messages/'+response.data._id)
     })
@@ -127,7 +127,7 @@ export default function InboxNewPage() {
 
   useEffect(() => {
     try {
-      axios.get('http://localhost:2000/isAuth', {
+      axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -216,6 +216,9 @@ export default function InboxNewPage() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

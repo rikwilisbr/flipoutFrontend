@@ -9,11 +9,13 @@ import { socket } from '../services/socket';
 //components
 import { TextareaAutosize } from '@mui/material';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SideNav from '../components/SideNav';
 import SendIcon from '@mui/icons-material/Send';
+
 
 
 export default function ChatPage() {
@@ -59,7 +61,7 @@ export default function ChatPage() {
         }
       }
      
-      const messagesListRes = await axios.get('http://localhost:2000/api/chat/messages/'+chatId, fetchConfig)
+      const messagesListRes = await axios.get(process.env.REACT_APP_APIURL+'/api/chat/messages/'+chatId, fetchConfig)
       const myMessageList = messagesListRes.data
 
       const lastMessageLen = myMessageList.length - 1
@@ -165,7 +167,7 @@ export default function ChatPage() {
         }
       }
   
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -176,7 +178,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     try {
-      axios.get('http://localhost:2000/isAuth', {
+      axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -207,16 +209,16 @@ export default function ChatPage() {
         }
       }
 
-      const chatListRes = await axios('http://localhost:2000/api/chat/'+chatId, fetchConfig)
+      const chatListRes = await axios(process.env.REACT_APP_APIURL+'/api/chat/'+chatId, fetchConfig)
       const myChatList =  chatListRes.data
     
       if(myChatList) setChat(myChatList)
 
 
-      const messagesListRes = await axios('http://localhost:2000/api/chat/messages/'+chatId, fetchConfig)
+      const messagesListRes = await axios(process.env.REACT_APP_APIURL+'/api/chat/messages/'+chatId, fetchConfig)
       const myMessageList = messagesListRes.data
 
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -316,7 +318,7 @@ export default function ChatPage() {
       }
     }
 
-    axios.put('http://localhost:2000/api/chat/change/chatname/'+chatId, {newChatName: chatNameValue}, fetchConfig)
+    axios.put(process.env.REACT_APP_APIURL+'/api/chat/change/chatname/'+chatId, {newChatName: chatNameValue}, fetchConfig)
     .then((response)=>{
       
       window.location.reload()
@@ -354,18 +356,18 @@ export default function ChatPage() {
 
       socket.emit('message_send', messageData)
 
-      await axios.post('http://localhost:2000/api/chat/messages',{content: messageValue, chatId: chatId, firstname: user.firstname, lastname: user.lastname, profilePic: user.profilePic, username: user.username}, fetchConfig)
+      await axios.post(process.env.REACT_APP_APIURL+'/api/chat/messages',{content: messageValue, chatId: chatId, firstname: user.firstname, lastname: user.lastname, profilePic: user.profilePic, username: user.username}, fetchConfig)
       .then((response)=>{
       })
 
-      await axios.put('http://localhost:2000/api/chat/change/lastestMessage/'+chatId, {message: messageValue}, fetchConfig)
+      await axios.put(process.env.REACT_APP_APIURL+'/api/chat/change/lastestMessage/'+chatId, {message: messageValue}, fetchConfig)
       .then((response)=>{
       })
 
-      const messagesListRes = await axios.get('http://localhost:2000/api/chat/messages/'+chatId, fetchConfig)
+      const messagesListRes = await axios.get(process.env.REACT_APP_APIURL+'/api/chat/messages/'+chatId, fetchConfig)
       const myMessageList = messagesListRes.data
 
-      const homeRes = await axios.get('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios.get(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -485,19 +487,19 @@ export default function ChatPage() {
 
       socket.emit('message_send', messageData)
 
-      await axios.post('http://localhost:2000/api/chat/messages', {content: messageValue, chatId: chatId, firstname: user.firstname, lastname: user.lastname, profilePic: user.profilePic, username: user.username}, fetchConfig)
+      await axios.post(process.env.REACT_APP_APIURL+'/api/chat/messages', {content: messageValue, chatId: chatId, firstname: user.firstname, lastname: user.lastname, profilePic: user.profilePic, username: user.username}, fetchConfig)
       .then((response)=>{
         
       })
 
-      await axios.put('http://localhost:2000/api/chat/change/lastestMessage/'+chatId, {message: messageValue}, fetchConfig)
+      await axios.put(process.env.REACT_APP_APIURL+'/api/chat/change/lastestMessage/'+chatId, {message: messageValue}, fetchConfig)
       .then((response)=>{
       })
       
-      const messagesListRes = await axios.get('http://localhost:2000/api/chat/messages/'+chatId, fetchConfig)
+      const messagesListRes = await axios.get(process.env.REACT_APP_APIURL+'/api/chat/messages/'+chatId, fetchConfig)
       const myMessageList = messagesListRes.data
 
-      const homeRes = await axios.get('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios.get(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -700,6 +702,9 @@ export default function ChatPage() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+       <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

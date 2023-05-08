@@ -23,7 +23,7 @@ export default function Login() {
   };
 
   useEffect(()=>{
-    fetch('http://localhost:2000/isAuth',{
+    fetch(process.env.REACT_APP_APIURL+'/isAuth',{
       method: 'GET',
       crossDomain: true,
       headers:{
@@ -45,7 +45,7 @@ export default function Login() {
   function submitForm(){
         const data_ = formData
    
-        fetch('http://localhost:2000/login', {
+        fetch(process.env.REACT_APP_APIURL+'/login', {
             method: 'POST',
             crossDomain: true,
             headers:{
@@ -85,7 +85,7 @@ export default function Login() {
                     <button onClick={()=>{navigate('/register')} } className="register-button"><a href='/register'>Register Now</a></button>
                 </div>
         </div>
-        <div className="col-8 login-paper text-center">
+        <div className="col-8 login-paper">
             <h1>Login to FlipOut</h1>
             <p className="login-paper-p">Access your account right now!</p>
             <p style={{color: 'red'}}>{errorMessage}</p>
@@ -99,8 +99,9 @@ export default function Login() {
                         <p className="entry-pass-p">Your password:</p>
                         <input className='entry-input' type='password' placeholder='password' onChange={(e) => setFormData((prev)=> { return {...prev, password: e.target.value}})} required></input>
                     </div>
-                    <label></label>
+                    <div className="entry-btn-container">
                     <button className='entry-btn' onClick={ submitForm } >Login</button>
+                    </div>
                 </form>
                 </div>
                 <div>
@@ -113,6 +114,11 @@ export default function Login() {
                         cssOverride={override}
                     />
                     <a href='/recover'>Forgot password?</a>
+                    <div className="mobileSingUp">
+                        <span>Don't have a account? </span>
+                        <a href='/register'>Sing Up</a>
+                    </div>
+                    
                 </div>
 
         </div>

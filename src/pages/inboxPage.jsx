@@ -11,6 +11,7 @@ import SideNav from '../components/SideNav';
 //components
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 export default function InboxPage() {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ export default function InboxPage() {
       }
 
   
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -58,7 +59,7 @@ export default function InboxPage() {
         }
       }
 
-      const chatListRes = await axios('http://localhost:2000/api/chat', fetchConfig)
+      const chatListRes = await axios(process.env.REACT_APP_APIURL+'/api/chat', fetchConfig)
       const myChatList =  chatListRes.data
       
       setChatList(myChatList)
@@ -68,7 +69,7 @@ export default function InboxPage() {
 
   useEffect(() => {
     try {
-      axios.get('http://localhost:2000/isAuth', {
+      axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -135,6 +136,9 @@ export default function InboxPage() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

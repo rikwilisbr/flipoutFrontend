@@ -27,7 +27,7 @@ export default function EntryPost(prop){
       
         try {
           
-           await axios.post('http://localhost:2000/api/post/repost', {
+           await axios.post(process.env.REACT_APP_APIURL+'/api/post/repost', {
             repost: myRePost
           }, {
             headers: {
@@ -39,7 +39,7 @@ export default function EntryPost(prop){
             }
           })
          
-          await axios.put('http://localhost:2000/api/post/repost', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/repost', {
             repost: myRePost
           }, {
             headers: {
@@ -50,7 +50,7 @@ export default function EntryPost(prop){
             }
           })
       
-          await axios.put('http://localhost:2000/api/post/user/repost', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/user/repost', {
             repost: myRePost
           }, {
             headers: {
@@ -61,7 +61,7 @@ export default function EntryPost(prop){
             }
           })
       
-          const postsResponse = await axios.get('http://localhost:2000/api/post', {
+          const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -71,7 +71,7 @@ export default function EntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
@@ -82,7 +82,7 @@ export default function EntryPost(prop){
             prop.setUser(homeResponse.data)
           }catch (error) {
 
-          const mainPostResponse = await axios.get('http://localhost:2000/posts/'+prop.reply_id, {
+          const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -92,7 +92,7 @@ export default function EntryPost(prop){
           })
           prop.setMainPost(mainPostResponse.data)
 
-          const replyResponse = await axios.get('http://localhost:2000/api/reply/'+prop.reply_id, {
+          const replyResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/reply/'+prop.reply_id, {
               headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
@@ -102,7 +102,7 @@ export default function EntryPost(prop){
             })
             prop.setReplys(replyResponse.data)
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
@@ -119,7 +119,7 @@ export default function EntryPost(prop){
         event.stopPropagation()
         const myLike = getPostId(event)
     
-          await axios.put('http://localhost:2000/api/post/like', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/like', {
             like: myLike
           }, {
             headers: {
@@ -130,7 +130,7 @@ export default function EntryPost(prop){
             }
           })
       
-          await axios.put('http://localhost:2000/api/post/user/like', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/user/like', {
             like: myLike
           }, {
             headers: {
@@ -142,7 +142,7 @@ export default function EntryPost(prop){
           })
       
           try {
-            const postsResponse = await axios.get('http://localhost:2000/api/post', {
+            const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -152,7 +152,7 @@ export default function EntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -165,7 +165,7 @@ export default function EntryPost(prop){
           }
           catch(ex){
             
-          const replyResponse = await axios.get('http://localhost:2000/api/reply/'+prop.reply_id, {
+          const replyResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/reply/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -175,7 +175,7 @@ export default function EntryPost(prop){
           })
           prop.setReplys(replyResponse.data)
 
-          const mainPostResponse = await axios.get('http://localhost:2000/posts/'+prop.reply_id, {
+          const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -185,7 +185,7 @@ export default function EntryPost(prop){
           })
           prop.setMainPost(mainPostResponse.data)
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -204,10 +204,10 @@ export default function EntryPost(prop){
       async function deleteBtn(event){
         event.stopPropagation()
 
-        await axios.delete('http://localhost:2000/api/delete/'+prop.post_id)
+        await axios.delete(process.env.REACT_APP_APIURL+'/api/delete/'+prop.post_id)
        
         try{
-        const postsResponse = await axios.get('http://localhost:2000/api/post', {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -217,7 +217,7 @@ export default function EntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-        const homeResponse = await axios.get('http://localhost:2000/home', {
+        const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -229,7 +229,7 @@ export default function EntryPost(prop){
           prop.setUser(homeResponse.data)
         }catch(ex){
 
-          const replyResponse = await axios.get('http://localhost:2000/api/reply/'+prop.reply_id, {
+          const replyResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/reply/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -239,7 +239,7 @@ export default function EntryPost(prop){
           })
           prop.setReplys(replyResponse.data)
 
-          const mainPostResponse = await axios.get('http://localhost:2000/posts/'+prop.reply_id, {
+          const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -250,7 +250,7 @@ export default function EntryPost(prop){
           prop.setMainPost(mainPostResponse.data)
 
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',

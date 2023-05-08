@@ -13,7 +13,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import MailIcon from '@mui/icons-material/Mail';
 
 
-export default function SideNav(prop) {
+export default function MobileNav(prop) {
     const navigate = useNavigate()
 
     function logOut(){
@@ -24,18 +24,17 @@ export default function SideNav(prop) {
     }
 
   return (
-    <div className='nav col-2'>
+    <div className='mobileNav col-12'>
             <nav>
-              <a href='/'><WavesIcon sx={{color: 'red', fontSize: 50}}/></a>
-              <a href='/home'><HomeIcon sx={{color: 'white'}} fontSize='large'/><span>Home</span> </a>
-              <a href='/search'><SearchIcon sx={{color: 'white'}} fontSize='large'/> <span>Search</span></a>
+              <a href='/home'><HomeIcon sx={{color: 'white'}} fontSize='large'/></a>
+              <a href='/search'><SearchIcon sx={{color: 'white'}} fontSize='large'/></a>
               <a href='/notifications'>
               <NotificationsIcon sx={{color: 'white'}} fontSize='large'/> 
-              <span className='notificationsBadge'></span> <span>Notifications</span> </a>
+              <span className='notificationsBadge'></span></a>
               <a href='/inbox'><MailIcon sx={{color: 'white', transform: 'scale(0.8)'}} fontSize='large'/> 
-              <span className='messagesBadge'></span> <span>Messages</span></a>
-              <a href={'/profile/'+prop.username}><PersonIcon sx={{color: 'white'}} fontSize='large'/> <span>Profile</span></a>
-              <a className='logOutNav' onClick={logOut}><ExitToAppIcon sx={{color: 'white'}} fontSize='large'/> <span>LogOut</span></a>
+              <span className='messagesBadge'></span></a>
+              <a href={'/profile/'+prop.username}><PersonIcon sx={{color: 'white'}} fontSize='large'/></a>
+              <a className='logOutNav' onClick={logOut}><ExitToAppIcon sx={{color: 'white'}} fontSize='large'/></a>
             </nav>
           </div>
   )

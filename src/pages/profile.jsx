@@ -13,6 +13,7 @@ import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -59,7 +60,7 @@ export default function Post() {
 
     useEffect(() => {
       try {
-        axios.get('http://localhost:2000/isAuth', {
+        axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -100,7 +101,7 @@ export default function Post() {
 
     async function follow(){
       const myId = localStorage.getItem('user-id')
-      await axios.put('http://localhost:2000/api/followers/profile/'+username+'/'+myId, {
+      await axios.put(process.env.REACT_APP_APIURL+'/api/followers/profile/'+username+'/'+myId, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -110,7 +111,7 @@ export default function Post() {
       })
       
   
-       await axios.put('http://localhost:2000/api/following/profile/'+username+'/'+myId+'/'+currentUser.id, {
+       await axios.put(process.env.REACT_APP_APIURL+'/api/following/profile/'+username+'/'+myId+'/'+currentUser.id, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -119,7 +120,7 @@ export default function Post() {
         }
       })
   
-      const currentUserRes = await axios.get('http://localhost:2000/api/user/profile/'+username, {
+      const currentUserRes = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+username, {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -132,7 +133,7 @@ export default function Post() {
         if(myCurrentUser) setCurrentUser(myCurrentUser)
       
   
-      const userRes = await axios.get('http://localhost:2000/home', {
+      const userRes = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
@@ -285,17 +286,17 @@ export default function Post() {
         }
       }
 
-      const postRes = await axios.get('http://localhost:2000/api/post/profile/'+username, fetchConfig)
+      const postRes = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+username, fetchConfig)
       const myPosts = postRes.data
 
       if(myPosts) setPosts(myPosts)
 
-      const currentUserRes = await axios.get('http://localhost:2000/api/user/profile/'+username, fetchConfig)
+      const currentUserRes = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+username, fetchConfig)
       const myCurrentUser = currentUserRes.data
    
       if(myCurrentUser) setCurrentUser(myCurrentUser)
   
-      const userRes = await axios.get('http://localhost:2000/home', {
+      const userRes = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -337,7 +338,7 @@ export default function Post() {
       if(newValue === 'post'){
         setTabValue('post')
         setTabBoolean(true)
-        const postsResponse = await axios.get('http://localhost:2000/api/post/profile/'+username, {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+username, {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -349,7 +350,7 @@ export default function Post() {
       } else {
         setTabValue('reply')
         setTabBoolean(false)
-        const postsResponse = await axios.get('http://localhost:2000/api/post/reply/profile/'+username, {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/profile/'+username, {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -359,7 +360,7 @@ export default function Post() {
         })
       setPosts(postsResponse.data)
 
-      const homeResponse = await axios.get('http://localhost:2000/home', {
+      const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -400,7 +401,7 @@ export default function Post() {
         canvas.toBlob(async blob=>{
           formData.append("img", blob)
           
-           await axios.post('http://localhost:2000/api/upload/profilePicture', formData, {
+           await axios.post(process.env.REACT_APP_APIURL+'/api/upload/profilePicture', formData, {
             headers:{
               "Content-Type": 'multipart/form-data',
               'user-id': localStorage.getItem('user-id')
@@ -428,7 +429,7 @@ export default function Post() {
       canvas.toBlob(async blob=>{
         formData.append("img", blob)
         
-         await axios.post('http://localhost:2000/api/upload/coverPhoto', formData, {
+         await axios.post(process.env.REACT_APP_APIURL+'/api/upload/coverPhoto', formData, {
           headers:{
             "Content-Type": 'multipart/form-data',
             'user-id': localStorage.getItem('user-id')
@@ -457,7 +458,7 @@ export default function Post() {
       }
     }
 
-    const chat = await axios('http://localhost:2000/api/chat/check/'+user.id+'/'+currentUser.id, fetchConfig)
+    const chat = await axios(process.env.REACT_APP_APIURL+'/api/chat/check/'+user.id+'/'+currentUser.id, fetchConfig)
     const myChat =  chat.data
     if (myChat && myChat.status === false){
       const payloadUser = { 
@@ -480,7 +481,7 @@ export default function Post() {
         usersId: [user.id, currentUser.id]
       }
 
-      axios.post('http://localhost:2000/api/chat/check', payload, fetchConfig).then((response)=>{
+      axios.post(process.env.REACT_APP_APIURL+'/api/chat/check', payload, fetchConfig).then((response)=>{
         navigate('/messages/'+response.data._id)
       })
 
@@ -698,6 +699,9 @@ export default function Post() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

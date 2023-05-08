@@ -11,6 +11,7 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 //components
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
+import MobileNav from '../components/mobileNav';
 
 export default function NotificationPage() {
   const navigate = useNavigate()
@@ -29,7 +30,7 @@ export default function NotificationPage() {
         }
       }
 
-      const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+      const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
@@ -52,19 +53,19 @@ export default function NotificationPage() {
             }
           }
     
-          const homeRes = await axios('http://localhost:2000/home', fetchConfig)
+          const homeRes = await axios(process.env.REACT_APP_APIURL+'/home', fetchConfig)
           const myHome =  homeRes.data
           
           if (myHome) setUser(myHome)
     
-          const notificationsListRes = await axios('http://localhost:2000/api/notifications/'+myHome.id,  fetchConfig)
+          const notificationsListRes = await axios(process.env.REACT_APP_APIURL+'/api/notifications/'+myHome.id,  fetchConfig)
           const myNotificationsList = notificationsListRes.data
           
           myNotificationsList.forEach(async (element)=>{
-            const currentUserRes = await axios('http://localhost:2000/api/notifications/user/'+element.userFrom, fetchConfig)
+            const currentUserRes = await axios(process.env.REACT_APP_APIURL+'/api/notifications/user/'+element.userFrom, fetchConfig)
             const currentUser = currentUserRes.data
             if(element.notificationsType != 'followed'){
-              const currentPostRes = await axios('http://localhost:2000/api/notifications/post/'+element.entityId, fetchConfig)
+              const currentPostRes = await axios(process.env.REACT_APP_APIURL+'/api/notifications/post/'+element.entityId, fetchConfig)
               const currentPost = currentPostRes.data
               setNotifications(prev=>{
                 return([
@@ -111,7 +112,7 @@ export default function NotificationPage() {
 
     useEffect(() => {
       try {
-        axios.get('http://localhost:2000/isAuth', {
+        axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -141,7 +142,7 @@ export default function NotificationPage() {
       }
     }
 
-    await axios.put('http://localhost:2000/api/notifications/'+user.id+'/markAsOpened', fetchConfig).then((response)=>{
+    await axios.put(process.env.REACT_APP_APIURL+'/api/notifications/'+user.id+'/markAsOpened', fetchConfig).then((response)=>{
       if(response.status){
         window.location.reload()
       } else {
@@ -216,6 +217,9 @@ export default function NotificationPage() {
               <ThirdSide userId={user.id}/>
           </div>
 
+        </div>
+        <div className='row'>
+            <MobileNav username={user.username} />
         </div>
     </div>
   )

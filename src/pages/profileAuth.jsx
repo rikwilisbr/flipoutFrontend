@@ -8,7 +8,7 @@ export default function ProfileAuth() {
 
    useEffect(()=>{
     try {
-        axios.get('http://localhost:2000/isAuth', {
+        axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',

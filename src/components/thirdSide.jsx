@@ -10,9 +10,9 @@ export default function ThirdSide(prop) {
 
   useEffect(()=>{
     async function getData(){
-        const myDataRes = await axios.get('http://localhost:2000/api/suggestUsers/'+prop.userId)
+        const myDataRes = await axios.get(process.env.REACT_APP_APIURL+'/api/suggestUsers/'+prop.userId)
         const myData = myDataRes.data
-        console.log(myData)
+
     
         if(myData) {
             setSuggestUsers(myData)
@@ -45,9 +45,7 @@ export default function ThirdSide(prop) {
                             <a onClick={e => e.stopPropagation()} href={'/profile/'+prop.username}>{prop.firstname + ' ' + prop.lastname}</a>
                             <span className='username'>{'@'+prop.username}</span>
                           </div>
-                          <div className='followPageContainer'>
-                            <button onClick={() => {navigate('/profile/'+prop.username); window.location.reload()}} className='followPageButton'>Visit Profile</button>
-                          </div>
+                          
             
                         </div>
                      </div>

@@ -27,7 +27,7 @@ export default function ProfileEntryPost(prop){
       
         try {
           
-          const postCallBack = await axios.post('http://localhost:2000/api/post/repost', {
+          const postCallBack = await axios.post(process.env.REACT_APP_APIURL+'/api/post/repost', {
             repost: myRePost
           }, {
             headers: {
@@ -40,7 +40,7 @@ export default function ProfileEntryPost(prop){
           })
           console.log(postCallBack.data)
 
-          await axios.put('http://localhost:2000/api/post/repost', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/repost', {
             repost: myRePost
           }, {
             headers: {
@@ -51,7 +51,7 @@ export default function ProfileEntryPost(prop){
             }
           })
       
-          await axios.put('http://localhost:2000/api/post/user/repost', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/user/repost', {
             repost: myRePost
           }, {
             headers: {
@@ -62,7 +62,7 @@ export default function ProfileEntryPost(prop){
             }
           })
       
-          const postsResponse = await axios.get('http://localhost:2000/api/post/profile/'+prop.currentUsername, {
+          const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+prop.currentUsername, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -72,7 +72,7 @@ export default function ProfileEntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-          const currentUserResponse = await axios.get('http://localhost:2000/api/user/profile/'+prop.currentUsername, {
+          const currentUserResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+prop.currentUsername, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -82,7 +82,7 @@ export default function ProfileEntryPost(prop){
           })
           prop.setCurrentUser(currentUserResponse.data)
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
@@ -102,7 +102,7 @@ export default function ProfileEntryPost(prop){
         event.stopPropagation()
         const myLike = getPostId(event)
     
-          await axios.put('http://localhost:2000/api/post/like', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/like', {
             like: myLike
           }, {
             headers: {
@@ -113,7 +113,7 @@ export default function ProfileEntryPost(prop){
             }
           })
       
-          await axios.put('http://localhost:2000/api/post/user/like', {
+          await axios.put(process.env.REACT_APP_APIURL+'/api/post/user/like', {
             like: myLike
           }, {
             headers: {
@@ -125,7 +125,7 @@ export default function ProfileEntryPost(prop){
           })
       
           try {
-            const postsResponse = await axios.get('http://localhost:2000/api/post/profile/'+prop.currentUsername, {
+            const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+prop.currentUsername, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -135,7 +135,7 @@ export default function ProfileEntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-          const homeResponse = await axios.get('http://localhost:2000/home', {
+          const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -156,10 +156,10 @@ export default function ProfileEntryPost(prop){
       async function deleteBtn(event){
         event.stopPropagation()
 
-        const deleteResponse = await axios.delete('http://localhost:2000/api/delete/'+prop.post_id)
+        const deleteResponse = await axios.delete(process.env.REACT_APP_APIURL+'/api/delete/'+prop.post_id)
       
         try{
-        const postsResponse = await axios.get('http://localhost:2000/api/post/profile/'+prop.currentUsername, {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+prop.currentUsername, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -169,7 +169,7 @@ export default function ProfileEntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-        const homeResponse = await axios.get('http://localhost:2000/api/home', {
+        const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/home', {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
