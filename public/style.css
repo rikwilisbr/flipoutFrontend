@@ -1406,7 +1406,7 @@
     .mobileNav {
         display: flex;
         background-color: #191919;
-        height: 8vh;
+        height: 15vh;
         width: 100vw;
         justify-content: center;
         align-items: center;
