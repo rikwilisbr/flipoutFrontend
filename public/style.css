@@ -1465,10 +1465,6 @@
         margin-top: 0rem;
     }
 
-    .mobileSingIn span{
-        margin-top: 0rem;
-    }
-
     .entry-form-register{
         padding: 0rem;
     }
@@ -1492,7 +1488,7 @@
     .register-paper{
        display: block;
        width: 50rem;
-       height: 90vh;
+       height: 80vh;
        padding: 0;
        overflow-y: scroll;
        margin: 5vh auto
