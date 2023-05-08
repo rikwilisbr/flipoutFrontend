@@ -195,6 +195,7 @@ nav {
     font-weight: bold;
     cursor: pointer;
     padding: 1rem;
+    position: relative;
     
 }
 
@@ -1221,6 +1222,123 @@ nav {
     color: #657786;
     font-size: 13px;
 }
+
+.notifyListItem{
+    color: #363636;
+    padding: 0.7rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    cursor: pointer;
+    display: flex;
+}
+
+.notifyListItem:hover{
+    background-color: rgb(236, 234, 234);
+}
+
+.notifyListItem.active{
+    background-color: #67b3d154
+}
+
+.notifyListItem.active:hover{
+    background-color: #1874985b
+}
+
+.notifyListItemContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.notifyListItemContainer .notifyListHeadingUsername{
+    font-weight: bold;
+}
+
+.notifyListItemContainer .notifyListHeadingMessage{
+    font-weight: normal;
+    color: #657786;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.notifyListItemContainer .notifyListSubText{
+    color: #657786;
+    font-size: 0.9rem;
+}
+
+.notifyListItem img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.notifyListImageContainer{
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.markAsOpenedButton{
+    cursor: pointer;
+    color: #acaeaf;
+}
+
+.notificationsBadge,
+.messagesBadge{
+    position: absolute;
+    background-color: #EB5353;
+    width: 1.2rem;
+    height: 1.2rem;
+    text-align: center;
+    border-radius: 100%;
+    top: 1rem;
+    left: 0.7rem;
+    font-size: 0.8rem;
+    color: white;
+    visibility: hidden;
+}
+
+.notificationsBadge.active,
+.messagesBadge.active{
+    visibility: visible;
+}
+
+.third-section{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.thirdSideContainer{
+    display: flex;
+    height: 30rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 1rem;
+    flex-direction: column;
+    color: black;
+}
+
+.thirdSideHeaderContainer {
+    padding: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid white;
+}
+
+.thirdSideHeaderContainer h1{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.thirdSideBodyContainer{
+    padding-top: 0.5rem;
+}
+
+
+
+
 
 
 

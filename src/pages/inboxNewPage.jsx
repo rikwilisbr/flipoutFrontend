@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {useQuery} from 'react-query';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 //components
 import SideNav from '../components/SideNav';
+import ThirdSide from '../components/thirdSide';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 
-export default function MessagesNewPage() {
+export default function InboxNewPage() {
   const navigate = useNavigate()
   const [user, setUser] = useState({})
   const [inputText, setInputText] = useState('')
@@ -21,13 +21,7 @@ export default function MessagesNewPage() {
   const [selectedUsersId, setSelectedUsersId] = useState([])
   const [buttonActive, setButtonActive] = useState(true)
 
-  function logOut(){
-    localStorage.removeItem('token')
-    localStorage.removeItem('user-id')
-    localStorage.removeItem('user')
-    navigate('/login')
-    }
-
+ 
   const fetchData = async () =>{
       const fetchConfig = {
         method: 'GET',
@@ -158,7 +152,7 @@ export default function MessagesNewPage() {
           
           <div className='main-section scroll col-10 col-md-8 col-lg-6'>
             <div className='home-title'>
-                <ArrowBackIcon onClick={()=> navigate('/messages')} className='back-arrow'/>
+                <ArrowBackIcon onClick={()=> navigate('/inbox')} className='back-arrow'/>
                 <h1>New Message</h1>
             </div>
             <div className='chatPageContainer'>
@@ -219,7 +213,7 @@ export default function MessagesNewPage() {
           </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>

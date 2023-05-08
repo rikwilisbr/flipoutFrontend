@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 //components
 import EntryPost from '../components/EntryPost';
 import SideNav from '../components/SideNav';
+import ThirdSide from '../components/thirdSide';
 import { TextareaAutosize } from '@mui/material';
 
 //material ui icons
@@ -347,7 +348,7 @@ export default function Post() {
             </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>

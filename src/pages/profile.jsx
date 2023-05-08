@@ -12,6 +12,7 @@ import Tab from '@mui/material/Tab';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import SideNav from '../components/SideNav';
+import ThirdSide from '../components/thirdSide';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -636,6 +637,7 @@ export default function Post() {
                       <ProfileEntryPost 
                           key={index}
                           post_id={prop._id}
+                          current_id={prop.rePostsData}
                           content={prop.content}
                           currentUsername={username}
                           firstname={prop.postedBy.firstname}
@@ -693,7 +695,7 @@ export default function Post() {
           </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>

@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import SideNav from '../components/SideNav';
+import ThirdSide from '../components/thirdSide';
 
 
 //material ui icons
@@ -149,7 +150,7 @@ function FollowingPage() {
           </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
       </div>
     </div>

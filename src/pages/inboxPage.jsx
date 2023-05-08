@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {useQuery} from 'react-query';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-
 
 //material ui icons
-import WavesIcon from '@mui/icons-material/Waves';
-import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SideNav from '../components/SideNav';
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
-export default function MessagesPage() {
+//components
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import ThirdSide from '../components/thirdSide';
+
+export default function InboxPage() {
   const navigate = useNavigate()
   const [user, setUser] = useState({})
   const [chatList, setChatList] = useState([])
@@ -105,7 +101,7 @@ export default function MessagesPage() {
                 </div>
                 
                 <div className='addButtonContainer'>
-                <AddBoxOutlinedIcon onClick={()=> navigate('/messages/new')} className='new-message'/>
+                <AddBoxOutlinedIcon onClick={()=> navigate('/inbox/new')} className='new-message'/>
                 </div>
             </div>
             <div>
@@ -136,7 +132,7 @@ export default function MessagesPage() {
           </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>

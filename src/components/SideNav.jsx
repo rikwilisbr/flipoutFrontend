@@ -29,8 +29,11 @@ export default function SideNav(prop) {
               <a href='/'><WavesIcon sx={{color: 'red', fontSize: 50}}/></a>
               <a href='/home'><HomeIcon sx={{color: 'white'}} fontSize='large'/> Home</a>
               <a href='/search'><SearchIcon sx={{color: 'white'}} fontSize='large'/> Search</a>
-              <a href='/notifications'><NotificationsIcon sx={{color: 'white'}} fontSize='large'/> Notifications</a>
-              <a href='/messages'><MailIcon sx={{color: 'white', transform: 'scale(0.8)'}} fontSize='large'/> Messages</a>
+              <a href='/notifications'>
+              <NotificationsIcon sx={{color: 'white'}} fontSize='large'/> 
+              <span className='notificationsBadge'></span> Notifications </a>
+              <a href='/inbox'><MailIcon sx={{color: 'white', transform: 'scale(0.8)'}} fontSize='large'/> 
+              <span className='messagesBadge'></span> Messages</a>
               <a href={'/profile/'+prop.username}><PersonIcon sx={{color: 'white'}} fontSize='large'/> Profile</a>
               <a className='logOutNav' onClick={logOut}><ExitToAppIcon sx={{color: 'white'}} fontSize='large'/> Logout</a>
             </nav>

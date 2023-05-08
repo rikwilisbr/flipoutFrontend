@@ -8,6 +8,7 @@ import { socket } from '../services/socket';
 import EntryPost from '../components/EntryPost';
 import SideNav from '../components/SideNav';
 import { TextareaAutosize } from '@mui/material';
+import ThirdSide from '../components/thirdSide';
 
 
 export default function Home() {
@@ -264,6 +265,7 @@ export default function Home() {
                       <EntryPost 
                           key={index}
                           post_id={prop._id}
+                          current_id={prop.rePostsData}
                           content={prop.content}
                           firstname={prop.postedBy.firstname}
                           lastname={prop.postedBy.lastname}
@@ -289,7 +291,7 @@ export default function Home() {
             </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+             <ThirdSide userId={user.id}/>
           </div>
 
         </div>

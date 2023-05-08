@@ -13,7 +13,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
+//components
 import SideNav from '../components/SideNav';
+import ThirdSide from '../components/thirdSide';
 
 export default function PageNotFound() {
   const navigate = useNavigate()
@@ -80,7 +83,7 @@ export default function PageNotFound() {
           </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>

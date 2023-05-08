@@ -13,8 +13,8 @@ import SearchUsers from "./pages/searchUsers";
 import SearchPosts from "./pages/searchPosts";
 import SearchAuth from "./pages/searchAuth";
 import PageNotFound from "./pages/pageNotFound";
-import MessagesPage from "./pages/messagesPage";
-import MessagesNewPage from "./pages/messagesNewPage";
+import InboxPage from "./pages/inboxPage";
+import InboxNewPage from "./pages/inboxNewPage";
 import ChatPage from "./pages/chatPage";
 import NotificationPage from "./pages/notificationPage";
 
@@ -40,8 +40,8 @@ export default function App(){
                 <Route path='/profile/:username' element={<Profile />} />
                 <Route path='/profile/:username/following' element={<FollowingPage />} />
                 <Route path='/profile/:username/followers' element={<FollowersPage />} />
-                <Route path='/messages' element={<MessagesPage />} />
-                <Route path='/messages/new' element={<MessagesNewPage />} />
+                <Route path='/inbox' element={<InboxPage />} />
+                <Route path='/inbox/new' element={<InboxNewPage />} />
                 <Route path='/messages/:chatId' element={<ChatPage />} />
                 <Route path='/notifications' element={<NotificationPage />} />
                 

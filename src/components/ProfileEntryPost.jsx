@@ -223,7 +223,7 @@ export default function ProfileEntryPost(prop){
 
     function navigateToPost(event){
       event.stopPropagation()
-      navigate(prop.isReply ? '/posts/'+prop.current_id : '/posts/'+prop.post_id )
+      navigate(prop.isRepostedMessage[prop.post_id+'status'] ? '/posts/'+prop.current_id : '/posts/'+prop.post_id )
     
     }
 

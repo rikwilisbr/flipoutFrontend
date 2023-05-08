@@ -8,6 +8,7 @@ import { socket } from '../services/socket';
 
 //components
 import { TextareaAutosize } from '@mui/material';
+import ThirdSide from '../components/thirdSide';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -82,6 +83,7 @@ export default function ChatPage() {
       let isFirst = Boolean
         if(myMessageList[lastMessageLen - 1]){
           isFirst = myMessage.senderId != myMessageList[lastMessageLen - 1].senderId ? true : false
+          console.log(isFirst)
         } else {
           isFirst = true
         }
@@ -604,7 +606,7 @@ export default function ChatPage() {
           
           <div className='main-section scroll col-10 col-md-8 col-lg-6'>
             <div className='home-title'>
-                <ArrowBackIcon onClick={()=> navigate('/messages')} className='back-arrow'/>
+                <ArrowBackIcon onClick={()=> navigate('/inbox')} className='back-arrow'/>
                 <h1>Chat</h1>
             </div>
             
@@ -695,7 +697,7 @@ export default function ChatPage() {
             
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>

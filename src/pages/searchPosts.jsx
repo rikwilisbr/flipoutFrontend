@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import EntryPost from '../components/EntryPost';
 import SideNav from '../components/SideNav';
+import ThirdSide from '../components/thirdSide';
 
 //material ui icons
 import SearchIcon from '@mui/icons-material/Search';
@@ -283,7 +284,7 @@ export default function SearchPosts() {
             </div>
 
             <div className='third-section d-none d-md-block col-2 col-lg-4'>
-             <h1>third section</h1>
+              <ThirdSide userId={user.id}/>
           </div>
 
         </div>
