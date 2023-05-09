@@ -1394,7 +1394,7 @@
 @media only screen and (max-width: 550px){
 
     html, body{
-        height: -webkit-fill-available;
+        max-height: -webkit-fill-available;
     }
 
     .nav{
@@ -1402,12 +1402,13 @@
     }
 
     .main-section{
-        width: 100vw;
-        height: 92vh;
+        width: 100svw;
+        height: 93svh;
+        max-height: -webkit-fill-available;
     }
 
     .chatPageContainer{
-        height: 84vh;
+        height: 84svh;
     }
 
     .typingMessage{
@@ -1425,8 +1426,8 @@
     .mobileNav {
         display: flex;
         background-color: #191919;
-        height: 8vh;
-        width: 100vw;
+        height: 8svh;
+        width: 100svw;
         justify-content: center;
         padding-top: 0.7rem;
     }
