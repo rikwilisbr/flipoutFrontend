@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
@@ -23,12 +24,10 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 const queryClient = new QueryClient();
 
 export default function App(){
-    const resizeOps = () => {
-        document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
-      };
-    
-      resizeOps();
-      window.addEventListener("resize", resizeOps);
+    useEffect(()=>{
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    },[])
     return(
         <QueryClientProvider client={queryClient}>
             <Routes>

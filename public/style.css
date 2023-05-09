@@ -3,10 +3,6 @@
     overflow: hidden;
 }
 
-html, body {
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-  }
 
 /* Login and register */
 
@@ -1396,6 +1392,12 @@ html, body {
 }
 
 @media only screen and (max-width: 550px){
+
+    html, body{
+        height: 100vh; 
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    
     .nav{
         display: none !important;
     }
@@ -1405,8 +1407,8 @@ html, body {
         height: 92vh;
     }
 
-    .chatMessages{
-        height: 58vh;
+    .chatPageContainer{
+        height: 84vh;
     }
 
     .typingMessage{
@@ -1424,10 +1426,10 @@ html, body {
     .mobileNav {
         display: flex;
         background-color: #191919;
-        height: 10vh;
+        height: 8vh;
         width: 100vw;
         justify-content: center;
-        padding-top: 1rem;
+        padding-top: 0.7rem;
     }
 
     .mobileNav a {
@@ -1436,6 +1438,10 @@ html, body {
 
     .resultsContainer .followPageButton{
         display: none !important;
+    }
+
+    .home-title{
+        height: 3rem;
     }
 
 }
