@@ -14,6 +14,7 @@ import "cropperjs/dist/cropper.css";
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -57,6 +58,8 @@ export default function Post() {
     const [cropper, setCropper] = useState()
 
     const [cropper2, setCropper2] = useState()
+
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
       try {
@@ -307,6 +310,7 @@ export default function Post() {
       const myUser = userRes.data    
 
       if(myUser) setUser(myUser)
+      setLoading(false)
   
     } 
   
@@ -325,14 +329,8 @@ export default function Post() {
     },[user])
   
     
-    function logOut(){
-        localStorage.removeItem('token')
-        localStorage.removeItem('user-id')
-        localStorage.removeItem('user')
-        navigate('/login')
-        }
-
     
+
     async function tabChange(event, newValue){
       event.stopPropagation()
       if(newValue === 'post'){
@@ -490,6 +488,13 @@ export default function Post() {
     }
   }
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    marginTop: "2rem",
+  };
+
+
 
   return (
     <div className='container-fluid home-area'>
@@ -501,7 +506,10 @@ export default function Post() {
                 <ArrowBackIcon onClick={()=> navigate('/home')} className='back-arrow'/>
                 <h1>{username}</h1>
             </div>
-            <div className='profileHeaderContainer'>
+            {
+              loading ? <MoonLoader cssOverride={override} color="#FF0000" loading={loading} /> :
+              <div>
+              <div className='profileHeaderContainer'>
               <div className='coverPhotoSection'>
                 <div className='coverPhotoContainer'>
                   <img src={currentUser.coverPhoto} alt='cover photo'></img>
@@ -693,6 +701,9 @@ export default function Post() {
                                   
                   }
                 </div>
+              </div>
+            }
+            
           </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>

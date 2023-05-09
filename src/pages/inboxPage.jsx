@@ -12,11 +12,14 @@ import SideNav from '../components/SideNav';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
+
 
 export default function InboxPage() {
   const navigate = useNavigate()
   const [user, setUser] = useState({})
   const [chatList, setChatList] = useState([])
+  const [loading, setLoading] = useState(true)
 
   function logOut(){
     localStorage.removeItem('token')
@@ -63,6 +66,7 @@ export default function InboxPage() {
       const myChatList =  chatListRes.data
       
       setChatList(myChatList)
+      setLoading(false)
     }
     getData()
   },[])
@@ -87,6 +91,11 @@ export default function InboxPage() {
 
   }, [])
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    marginTop: "2rem",
+  };
 
 
   return (
@@ -106,6 +115,7 @@ export default function InboxPage() {
                 </div>
             </div>
             <div>
+              <MoonLoader cssOverride={override} color="#FF0000" loading={loading} />
                 {chatList.map((prop,index)=>{
                   const chatNamesArray = prop.users.map(element => element.firstname + ' ' + element.lastname)
                   const chatNames = chatNamesArray.join(', ')

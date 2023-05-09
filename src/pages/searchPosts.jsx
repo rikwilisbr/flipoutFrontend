@@ -11,6 +11,7 @@ import EntryPost from '../components/EntryPost';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
 
 //material ui icons
 import SearchIcon from '@mui/icons-material/Search';
@@ -33,6 +34,8 @@ export default function SearchPosts() {
     const [isDelete, setIsDelete] = useState({})
 
     const [tabValue, setTabValue] = useState('posts')
+
+    const [loading, setLoading] = useState(false)
 
     function getDelete(){
       posts.forEach(element =>{
@@ -206,13 +209,15 @@ export default function SearchPosts() {
 
       function getSearchText(event){
         const txt = event.currentTarget.value
+        setLoading(true)
         setSearchText(txt)
         if (txt === ''){
-          return
+          return setLoading(false)
         } else {
           axios.get(process.env.REACT_APP_APIURL+'/api/search/posts/?content='+txt)
           .then(response=>{
             setPosts(response.data)
+            setLoading(false)
           })
         }
         
@@ -224,6 +229,13 @@ export default function SearchPosts() {
         localStorage.removeItem('user')
         navigate('/login')
         }
+
+        const override = {
+          display: "block",
+          margin: "0 auto",
+          marginTop: "2rem",
+        };
+      
 
     
   return (
@@ -255,6 +267,8 @@ export default function SearchPosts() {
                     </Tabs>
                   </div>
                   <div className='feedArea'>
+                  <MoonLoader cssOverride={override} color="#FF0000" loading={loading} />
+
                     {posts.map((prop, index)=>{
                         return(
                           <EntryPost 

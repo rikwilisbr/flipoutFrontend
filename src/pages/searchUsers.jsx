@@ -10,6 +10,7 @@ import Tab from '@mui/material/Tab';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
 
 //material ui icons
 import SearchIcon from '@mui/icons-material/Search';
@@ -24,7 +25,8 @@ export default function SearchUsers() {
 
     const [foundUsers, setFoundUsers] = useState([])
 
-  
+    const [loading, setLoading] = useState(false)
+
   async function tabChange(event, newValue){
       navigate('/search/'+newValue)
   }
@@ -72,24 +74,27 @@ export default function SearchUsers() {
       function getSearchText(event){
         const txt = event.currentTarget.value
         setSearchText(txt)
+        setLoading(true)
         if (txt === ''){
-          return
+          return setLoading(false)
         } else {
           const newTxt = txt.replace('@','')
           axios.get(process.env.REACT_APP_APIURL+'/api/search/users/?username='+newTxt)
           .then(response=>{
             setFoundUsers(response.data)
+            setLoading(false)
           })
         }
         
       }
 
-      function logOut(){
-        localStorage.removeItem('token')
-        localStorage.removeItem('user-id')
-        localStorage.removeItem('user')
-        navigate('/login')
-        }
+
+        const override = {
+          display: "block",
+          margin: "0 auto",
+          marginTop: "2rem",
+        };
+      
 
     
   return (
@@ -122,6 +127,8 @@ export default function SearchUsers() {
                 </div>
 
                 <div>
+                <MoonLoader cssOverride={override} color="#FF0000" loading={loading} />
+
                   {foundUsers.map((prop, index)=>{
                     return(
                       <div key={index} className='resultsContainer'>

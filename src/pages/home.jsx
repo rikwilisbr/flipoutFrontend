@@ -10,7 +10,7 @@ import SideNav from '../components/SideNav';
 import { TextareaAutosize } from '@mui/material';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
-
+import {MoonLoader} from 'react-spinners'
 
 export default function Home() {
 
@@ -31,6 +31,8 @@ export default function Home() {
   const [isRepostedMessage, setIsRepostedMessage] = useState({})
   
   const [isDelete, setIsDelete] = useState({})
+
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
     socket.emit('setup', user)
@@ -175,6 +177,7 @@ export default function Home() {
     const myHome =  homeRes.data
     
     if (myHome) setUser(myHome)
+    setLoading(false)
   } 
 
   const {data, error, isLoading} = useQuery(['MyData'], fetchData);
@@ -239,6 +242,13 @@ export default function Home() {
 
       setLen(true)
     }
+
+    const override = {
+      display: "block",
+      margin: "0 auto",
+      marginTop: "2rem",
+    };
+  
     
   return (
     <div className='container-fluid home-area'>
@@ -248,11 +258,13 @@ export default function Home() {
             <div className='home-title'>
               <h1>Home</h1>
             </div>
+            {
+              loading ? <MoonLoader cssOverride={override} color="#FF0000" loading={loading} /> :
+              <div>
               <div className='postContainer'>
                 <div className='profilePicPOST' >
                   <img src={user.profilePic} alt='user profile pic'/>
                 </div>
-
                 <div className='postArea'>
                   <form>
                   <TextareaAutosize maxLength="1200" maxRows={10} className='postAreaText' onChange={getPostText} placeholder='What is happening?' />
@@ -289,6 +301,9 @@ export default function Home() {
                     )}).reverse()}
           
               </div>
+              </div>
+            }
+              
             </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>

@@ -10,6 +10,7 @@ import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import { TextareaAutosize } from '@mui/material';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -32,6 +33,8 @@ export default function Post() {
     const [isRepostedMessage, setIsRepostedMessage] = useState({})
     const [userNotFound, setUserNotFound] = useState(false)
     const [isDelete, setIsDelete] = useState({})
+
+    const [loading, setLoading] = useState(true)
 
   function getDelete(){
     const ids = document.querySelectorAll('[post-id]')
@@ -188,6 +191,7 @@ export default function Post() {
       const myHome =  homeRes.data
       
       if (myHome) setUser(myHome)
+      setLoading(false)
     } 
   
     const {data, error, isLoading} = useQuery(['MyPostData'], fetchData);
@@ -257,6 +261,14 @@ export default function Post() {
         })
       }
 
+      const override = {
+        display: "block",
+        margin: "0 auto",
+        marginTop: "2rem",
+      };
+    
+
+
   return (
     <div className='container-fluid home-area'>
       <div className='row'>
@@ -267,8 +279,12 @@ export default function Post() {
                 <ArrowBackIcon onClick={()=> navigate('/home')} className='back-arrow'/>
                 <h1>Post</h1>
             </div>
-              <div className=''>
+               {
+                loading ? <MoonLoader cssOverride={override} color="#FF0000" loading={loading} /> :
+                <div>
+                <div className=''>
                <div className='mainPostArea'>
+               
                { userNotFound ? <h4 style={{marginLeft: '1rem'}}>post do not exist or was deleted by author</h4> : mainPost.map((prop, index)=>{
                 return(
                     <EntryPost
@@ -346,6 +362,9 @@ export default function Post() {
                         }).reverse()}
                     </div>
                 </div>
+                </div>
+               }
+              
             </div>
 
           <div className='third-section d-none d-md-block col-2 col-lg-4'>

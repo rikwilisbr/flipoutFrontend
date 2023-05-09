@@ -12,11 +12,13 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
 
 export default function NotificationPage() {
   const navigate = useNavigate()
   const [user, setUser] = useState({})
   const [notifications, setNotifications] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const fetchData = async () =>{
       const fetchConfig = {
@@ -42,6 +44,7 @@ export default function NotificationPage() {
         isFirstRender.current = false
 
         async function getNotifications(){
+          setLoading(true)
           const fetchConfig = {
             method: 'GET',
             crossDomain: true,
@@ -61,7 +64,7 @@ export default function NotificationPage() {
           const notificationsListRes = await axios(process.env.REACT_APP_APIURL+'/api/notifications/'+myHome.id,  fetchConfig)
           const myNotificationsList = notificationsListRes.data
           
-          myNotificationsList.forEach(async (element)=>{
+          await myNotificationsList.forEach(async (element)=>{
             const currentUserRes = await axios(process.env.REACT_APP_APIURL+'/api/notifications/user/'+element.userFrom, fetchConfig)
             const currentUser = currentUserRes.data
             if(element.notificationsType != 'followed'){
@@ -100,13 +103,14 @@ export default function NotificationPage() {
                   }
                 ])
               })
-            }
-
-          
+            }          
           })
-
+          setLoading(false)
+          
         }
         getNotifications()
+        
+        
       }
     },[])
 
@@ -154,6 +158,13 @@ export default function NotificationPage() {
     
   const {data, error, isLoading} = useQuery(['MyPostData'], fetchData);
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    marginTop: "2rem",
+  };
+
+
   return (
     <div className='container-fluid home-area'>
       <div className='row'>
@@ -172,6 +183,8 @@ export default function NotificationPage() {
                 
             </div>
             <div className='notifyArea'>
+            <MoonLoader cssOverride={override} color="#FF0000" loading={loading} />
+
               {notifications.map((prop, index)=>{
                 return(
                   <div>

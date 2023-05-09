@@ -10,18 +10,12 @@ import Tab from '@mui/material/Tab';
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader} from 'react-spinners'
 
 
 //material ui icons
-import WavesIcon from '@mui/icons-material/Waves';
-import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { TextareaAutosize } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+
 
 function FollowingPage() {
   const { username } = useParams()
@@ -35,6 +29,8 @@ function FollowingPage() {
   const [followingData, setFollowingData]= useState([])
 
   const [tabValue, setTabValue] = useState('following')
+
+  const [loading, setLoading] = useState(true)
 
   
   async function tabChange(event, newValue){
@@ -76,6 +72,7 @@ function FollowingPage() {
     const myHome =  homeRes.data
   
     if (myHome) setUser(myHome)
+    setLoading(false)
   } 
 
   const {data, error, isLoading} = useQuery(['MyData'], fetchData);
@@ -107,6 +104,13 @@ function FollowingPage() {
     navigate('/login')
   }
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    marginTop: "2rem",
+  };
+
+
   return (
     <div className='container-fluid home-area'>
       <div className='row'>
@@ -129,6 +133,7 @@ function FollowingPage() {
                       <Tab value="followers" className='tabText' label="followers" />
                   </Tabs>
                   </div>
+                  <MoonLoader cssOverride={override} color="#FF0000" loading={loading} />
                   {followingData.map((prop,index)=>{
                     return(
                       <div key={index} className='resultsContainer'>

@@ -10,6 +10,7 @@ import { socket } from '../services/socket';
 import { TextareaAutosize } from '@mui/material';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
+import {MoonLoader, PulseLoader} from 'react-spinners'
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -28,7 +29,10 @@ export default function ChatPage() {
   const [messagesList, setMessagesList] = useState([])
   const [updateTyping, setUpdateTyping] = useState(false)
   const [userTypingName, setUserTypingName] = useState()
-
+  const [buttonDisable, setButtonDisable] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [sendLoading, setSendLoading] = useState(false)
+  
   const messagesEndRef = useRef(null)
 
 
@@ -293,7 +297,8 @@ export default function ChatPage() {
           }
         })
       } 
-
+      setLoading(false)
+       
     }
 
     getData()
@@ -330,6 +335,8 @@ export default function ChatPage() {
   async function sendMessageByKey(event){
     const enterKey = event.key
     if(enterKey === 'Enter' && messageValue.length > 0){
+      setButtonDisable(true)
+      setSendLoading(true)
       event.preventDefault()
       const fetchConfig = {
         method: 'POST',
@@ -457,10 +464,14 @@ export default function ChatPage() {
       } 
 
       setMessageValue('')
+      setButtonDisable(false)
+      setSendLoading(false)
     }
   }
 
   async function sendMessageByButton(event){
+    setButtonDisable(true)
+    setSendLoading(true)
     if (messageValue.length > 0){
       const fetchConfig = {
         method: 'POST',
@@ -587,6 +598,8 @@ export default function ChatPage() {
       }
 
       setMessageValue('')
+      setButtonDisable(false)
+      setSendLoading(false)
     }
   }
 
@@ -600,6 +613,13 @@ export default function ChatPage() {
 
     setMessageValue(value)
   }
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    marginTop: "2rem",
+  };
+
 
   return (
     <div className='container-fluid home-area'>
@@ -664,6 +684,7 @@ export default function ChatPage() {
                 <div className='mainContentContainer'>
                     <div className='chatContainer'>
                         <div className='chatMessages'>
+                        <MoonLoader cssOverride={override} color="#FFFFFF" loading={loading} />
                             {messagesList.map((prop,index)=>{
                               return(
                                 <div key={uuid()}>
@@ -690,7 +711,8 @@ export default function ChatPage() {
                         </div>
                         <div className='chatFooter'>
                             <TextareaAutosize onChange={getMessageValue} value={messageValue} onKeyDown={sendMessageByKey} maxRows={10} minRows={2} placeholder='type a message...'/>
-                            <button onClick={sendMessageByButton} className='sendMessageButton'><SendIcon /></button>
+                            <button disabled={buttonDisable} onClick={sendMessageByButton} className='sendMessageButton'><SendIcon /></button>
+                            <PulseLoader size={"10"} color="#FF0000" loading={sendLoading} />
                         </div>
                     </div>
                 </div>
