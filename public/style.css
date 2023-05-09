@@ -3,6 +3,11 @@
     overflow: hidden;
 }
 
+html, body {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
 /* Login and register */
 
 .entry-form-register{
@@ -1387,9 +1392,6 @@
     .nav span{
         display: none !important;
     }
-
-    
-
     
 }
 
@@ -1404,7 +1406,7 @@
     }
 
     .chatMessages{
-        height: 68vh;
+        height: 58vh;
     }
 
     .typingMessage{
@@ -1422,7 +1424,7 @@
     .mobileNav {
         display: flex;
         background-color: #191919;
-        height: 8vh;
+        height: 10vh;
         width: 100vw;
         justify-content: center;
         padding-top: 1rem;
