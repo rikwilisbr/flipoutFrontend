@@ -1403,6 +1403,23 @@
         height: 85vh;
     }
 
+    .chatMessages{
+        height: 55vh;
+    }
+
+    .typingMessage{
+        margin-left: 3.75rem;
+    }
+
+    .chatMessages .notUserMessage .messageContainer{
+        max-width: 15rem;
+    }
+
+    .chatMessages .userMessage .messageContainer{
+        max-width: 14rem;
+    }
+
+
     .mobileNav {
         display: flex;
         background-color: #191919;
@@ -1410,6 +1427,7 @@
         width: 100vw;
         justify-content: center;
         padding-top: 1rem;
+        overflow: hidden;
     }
 
     .mobileNav a {

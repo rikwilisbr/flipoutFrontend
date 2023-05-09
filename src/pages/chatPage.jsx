@@ -689,7 +689,7 @@ export default function ChatPage() {
 
                         </div>
                         <div className='chatFooter'>
-                            <TextareaAutosize onChange={getMessageValue} value={messageValue} onKeyDown={sendMessageByKey} autoFocus={true} maxRows={10} minRows={2} placeholder='type a message...'/>
+                            <TextareaAutosize onChange={getMessageValue} value={messageValue} onKeyDown={sendMessageByKey} maxRows={10} minRows={2} placeholder='type a message...'/>
                             <button onClick={sendMessageByButton} className='sendMessageButton'><SendIcon /></button>
                         </div>
                     </div>
