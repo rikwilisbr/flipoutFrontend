@@ -1400,11 +1400,11 @@
 
     .main-section{
         width: 100vw;
-        height: 85vh;
+        height: 92vh;
     }
 
     .chatMessages{
-        height: 55vh;
+        height: 68vh;
     }
 
     .typingMessage{
@@ -1422,11 +1422,10 @@
     .mobileNav {
         display: flex;
         background-color: #191919;
-        height: 15vh;
+        height: 8vh;
         width: 100vw;
         justify-content: center;
         padding-top: 1rem;
-        overflow: hidden;
     }
 
     .mobileNav a {
