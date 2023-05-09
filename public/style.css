@@ -1241,8 +1241,7 @@
 .typingMessage{
     display: block;
     position: absolute;
-    margin-top: 2.5rem;
-    margin-left: 5.75rem;
+    margin-left: 3.75rem;
     color: #657786;
     font-size: 13px;
 }
@@ -1409,10 +1408,6 @@
 
     .chatPageContainer{
         height: 84svh;
-    }
-
-    .typingMessage{
-        margin-left: 3.75rem;
     }
 
     .chatMessages .notUserMessage .messageContainer{
