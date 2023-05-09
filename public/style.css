@@ -1394,10 +1394,9 @@
 @media only screen and (max-width: 550px){
 
     html, body{
-        height: 100vh; 
-        height: calc(var(--vh, 1vh) * 100);
+        height: -webkit-fill-available;
     }
-    
+
     .nav{
         display: none !important;
     }
