@@ -65,7 +65,42 @@ export default function InboxPage() {
       const chatListRes = await axios(process.env.REACT_APP_APIURL+'/api/chat', fetchConfig)
       const myChatList =  chatListRes.data
       
-      setChatList(myChatList)
+      await Promise.all(
+        myChatList.map(async (element) => {
+          const myArr = [];
+          await Promise.all(
+            element.usersId.map(async (element2) => {
+              const myUserResponse = await axios(process.env.REACT_APP_APIURL+'/api/notifications/user/'+element2, fetchConfig)
+              const myUser = myUserResponse.data
+              myArr.push({
+                id: myUser._id,
+                firstname: myUser.firstname,
+                lastname: myUser.lastname,
+                profilePic: myUser.profilePic,
+                username: myUser.username 
+              })
+            })
+          )
+
+          const myData = {
+          _id: element._id,
+          isGroupChat: element.isGroupChat,
+          usersId: element.usersId,
+          users: myArr,
+          lastestMessage: element.lastestMessage,
+          chatName: element.chatName
+          }
+
+          setChatList(prev=>{
+            return([
+              ...prev,
+              myData
+            ])
+          })
+          
+        })
+      )
+
       setLoading(false)
     }
     getData()
@@ -96,7 +131,6 @@ export default function InboxPage() {
     margin: "0 auto",
     marginTop: "2rem",
   };
-
 
   return (
     <div className='container-fluid home-area'>

@@ -216,7 +216,43 @@ export default function ChatPage() {
       const chatListRes = await axios(process.env.REACT_APP_APIURL+'/api/chat/'+chatId, fetchConfig)
       const myChatList =  chatListRes.data
     
-      if(myChatList) setChat(myChatList)
+      if(myChatList) {
+        await Promise.all(
+        myChatList.map(async (element) => {
+          const myArr = [];
+          await Promise.all(
+            element.usersId.map(async (element2) => {
+              const myUserResponse = await axios(process.env.REACT_APP_APIURL+'/api/notifications/user/'+element2, fetchConfig)
+              const myUser = myUserResponse.data
+              myArr.push({
+                id: myUser._id,
+                firstname: myUser.firstname,
+                lastname: myUser.lastname,
+                profilePic: myUser.profilePic,
+                username: myUser.username 
+              })
+            })
+          )
+
+          const myData = {
+          _id: element._id,
+          isGroupChat: element.isGroupChat,
+          usersId: element.usersId,
+          users: myArr,
+          lastestMessage: element.lastestMessage,
+          chatName: element.chatName
+          }
+
+          setChat(prev=>{
+            return([
+              ...prev,
+              myData
+            ])
+          })
+          
+        })
+      )
+      }
 
 
       const messagesListRes = await axios(process.env.REACT_APP_APIURL+'/api/chat/messages/'+chatId, fetchConfig)
