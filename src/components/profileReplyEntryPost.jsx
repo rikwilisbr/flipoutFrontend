@@ -34,7 +34,6 @@ export default function ProfileReplyEntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id'),
               'user': localStorage.getItem('user')
@@ -47,7 +46,6 @@ export default function ProfileReplyEntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id'),
             }
@@ -58,7 +56,6 @@ export default function ProfileReplyEntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -67,7 +64,6 @@ export default function ProfileReplyEntryPost(prop){
           const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/reply/profile/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -77,7 +73,6 @@ export default function ProfileReplyEntryPost(prop){
           const currentUserResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -87,7 +82,7 @@ export default function ProfileReplyEntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
+
                 'Access-Control-Expose-Headers': 'user-id',
                 'user-id': localStorage.getItem('user-id')
               }
@@ -109,7 +104,6 @@ export default function ProfileReplyEntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -120,7 +114,6 @@ export default function ProfileReplyEntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -130,7 +123,6 @@ export default function ProfileReplyEntryPost(prop){
             const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/profile/'+prop.currentUsername, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -140,7 +132,6 @@ export default function ProfileReplyEntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -164,7 +155,6 @@ export default function ProfileReplyEntryPost(prop){
         const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/profile/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -174,7 +164,6 @@ export default function ProfileReplyEntryPost(prop){
         const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }

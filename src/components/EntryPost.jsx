@@ -36,7 +36,6 @@ export default function EntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id'),
               'user': localStorage.getItem('user')
@@ -48,7 +47,6 @@ export default function EntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id'),
             }
@@ -59,7 +57,6 @@ export default function EntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -68,7 +65,6 @@ export default function EntryPost(prop){
           const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -78,7 +74,7 @@ export default function EntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
+
                 'Access-Control-Expose-Headers': 'user-id',
                 'user-id': localStorage.getItem('user-id')
               }
@@ -90,7 +86,6 @@ export default function EntryPost(prop){
           const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -100,7 +95,7 @@ export default function EntryPost(prop){
           const replyResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/reply/'+prop.reply_id, {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
+
                 'Access-Control-Expose-Headers': 'user-id',
                 'user-id': localStorage.getItem('user-id')
               }
@@ -110,7 +105,7 @@ export default function EntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
+
                 'Access-Control-Expose-Headers': 'user-id',
                 'user-id': localStorage.getItem('user-id')
               }
@@ -130,7 +125,6 @@ export default function EntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -141,7 +135,6 @@ export default function EntryPost(prop){
           }, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -151,7 +144,6 @@ export default function EntryPost(prop){
             const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -161,7 +153,6 @@ export default function EntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -175,7 +166,6 @@ export default function EntryPost(prop){
           const replyResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/reply/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -185,7 +175,6 @@ export default function EntryPost(prop){
           const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -195,7 +184,6 @@ export default function EntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -215,7 +203,6 @@ export default function EntryPost(prop){
         const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -225,7 +212,6 @@ export default function EntryPost(prop){
         const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -237,7 +223,6 @@ export default function EntryPost(prop){
           const replyResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/reply/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -247,7 +232,6 @@ export default function EntryPost(prop){
           const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }
@@ -258,7 +242,6 @@ export default function EntryPost(prop){
           const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'Access-Control-Expose-Headers': 'user-id',
               'user-id': localStorage.getItem('user-id')
             }

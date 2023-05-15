@@ -185,7 +185,6 @@ export default function ChatPage() {
       axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
           'x-access-token': localStorage.getItem('token')
         }
       }).then(response => {
