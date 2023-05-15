@@ -61,6 +61,13 @@ export default function Post() {
 
     const [loading, setLoading] = useState(true)
 
+    const [editUserValues, setEditUserValues] = useState({
+      firstname: '',
+      lastname: ''
+    })
+
+    
+
     useEffect(() => {
       try {
         axios.get(process.env.REACT_APP_APIURL+'/isAuth', {
@@ -494,8 +501,29 @@ export default function Post() {
     marginTop: "2rem",
   };
 
-
-
+  async function updateEditUser(){
+    const fetchConfig = {
+      method: 'PUT',
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Expose-Headers': 'user-id',
+        "user-id": localStorage.getItem('user-id')
+      }
+    }
+    
+    if(editUserValues.firstname.length > 0){
+      await axios.put(process.env.REACT_APP_APIURL+'/api/update/user/'+user.id, editUserValues ,fetchConfig).then((response)=>{
+        if(response.status === 200){
+          window.location.reload()
+        }
+      })
+    } else {
+      alert('firstname box can not be empty')
+    }
+   
+  }
   return (
     <div className='container-fluid home-area'>
       <div className='row'>
@@ -526,7 +554,7 @@ export default function Post() {
               </div>
                 {isloggedUser ? 
                 <div className='profileButtonsContainer'> <button className='profileMessageButton' onClick={messageButton}><MailOutlineIcon /></button> <button onClick={follow} className={isFollowing ? 'profileFollowingButton' : 'profileFollowButton'}>{isFollowing ? 'Following' : 'Follow'}</button></div> : 
-                <div className='profileButtonsContainer'> <button className='profileEditButton'>Edit profile</button></div>
+                <div className='profileButtonsContainer'> <button data-bs-toggle='modal' data-bs-target='#EditNameModal' className='profileEditButton'>Edit profile</button></div>
                 }
                 <div className='profileUserDetails'>
                   <span className='displayName'>{currentUser.firstname + ' ' + currentUser.lastname}</span>
@@ -621,6 +649,27 @@ export default function Post() {
                           <div className="modal-footer">
                             <button onClick={()=>window.location.reload()} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button onClick={uploadCoverImage} type="button" className="btn btn-primary">Save</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="modal fade" id="EditNameModal" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="EditNameModalLabel" aria-hidden="true">
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h1 className="modal-title fs-5">Edit your profile</h1>
+                            <button type="button" onClick={()=>window.location.reload()} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div style={{height: '25vh'}} className="modal-body chatModalBody">
+                            <span>firstname:</span>
+                            <input style={{marginBottom: '1rem'}} name='firstnameInput' onChange={(e)=>{setEditUserValues((prev) =>{return({...prev, firstname: e.target.value})})}} value={editUserValues.firstname} className='chatNameChangeInput' type='text' placeholder='type your new firstname...'/>
+                            <span>lastname:</span>
+                            <input name='lastnameInput' onChange={(e)=>{setEditUserValues((prev) =>{return({...prev, lastname: e.target.value})})}} value={editUserValues.lastname} className='chatNameChangeInput' type='text' placeholder='type your new lastname...'/>
+                          </div>
+                          <div className="modal-footer">
+                            <button onClick={()=>window.location.reload()} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button onClick={updateEditUser} type="button" className="btn btn-primary">Save</button>
                           </div>
                         </div>
                       </div>

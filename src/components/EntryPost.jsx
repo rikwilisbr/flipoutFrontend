@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,9 +11,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 //components
-
+import {ScaleLoader} from 'react-spinners'
 
 export default function EntryPost(prop){
+  const [likeLoading, setLikeLoading] = useState(false)
+  const [repostLoading, setRepostLoading] = useState(false)
   
   const navigate = useNavigate()
 
@@ -24,7 +27,8 @@ export default function EntryPost(prop){
       async function rePostBtn(event) {
         event.stopPropagation()
         const myRePost = getPostId(event)
-      
+        
+        setRepostLoading(true)
         try {
           
            await axios.post(process.env.REACT_APP_APIURL+'/api/post/repost', {
@@ -80,6 +84,7 @@ export default function EntryPost(prop){
               }
             })
             prop.setUser(homeResponse.data)
+            setRepostLoading(false)
           }catch (error) {
 
           const mainPostResponse = await axios.get(process.env.REACT_APP_APIURL+'/posts/'+prop.reply_id, {
@@ -111,6 +116,7 @@ export default function EntryPost(prop){
               }
             })
             prop.setUser(homeResponse.data)
+            setRepostLoading(false)
           }
           
       }
@@ -118,7 +124,7 @@ export default function EntryPost(prop){
       async function likeBtn(event) {
         event.stopPropagation()
         const myLike = getPostId(event)
-    
+        setLikeLoading(true)
           await axios.put(process.env.REACT_APP_APIURL+'/api/post/like', {
             like: myLike
           }, {
@@ -161,6 +167,7 @@ export default function EntryPost(prop){
             }
           })
           prop.setUser(homeResponse.data)
+          setLikeLoading(false)
 
           }
           catch(ex){
@@ -195,10 +202,8 @@ export default function EntryPost(prop){
           })
           
           prop.setUser(homeResponse.data)
-
+          setLikeLoading(false)
           }
-
-      
       }
 
       async function deleteBtn(event){
@@ -308,6 +313,40 @@ export default function EntryPost(prop){
     
     }
 
+    function LikeButton(){
+      if(likeLoading){
+        return(
+          <ScaleLoader height={20} width={2} color='#eb535381'/>
+        ) 
+      } else {
+        return(
+          prop.like ? <div className='postButtonContainer'>
+                  <button post-id={prop.post_id} onClick={likeBtn} className={prop.isLiked[prop.post_id] ? 'like-btn like-btn-red' : 'like-btn'}>
+                    {prop.isLiked[prop.post_id] ? <FavoriteIcon fontSize='small' /> : <FavoriteBorderOutlinedIcon fontSize='small' />}
+                  </button>
+                    <span className={prop.isLiked[prop.post_id] ? 'likeNumber-red': 'likeNumber'}>{prop.likes || ""}</span>
+                </div> : null 
+        )
+      }
+    }
+
+    function RepostButton(){
+      if(repostLoading){
+        return(
+          <ScaleLoader height={20} width={2} color='#36ae7c56'/>
+        ) 
+      } else {
+        return(
+          prop.repost ? <div className='postButtonContainer'>
+                  <button onClick={rePostBtn} post-id={prop.post_id} className={prop.isReposted[prop.post_id] ? 'repost-btn repost-btn-green' : 'repost-btn'}>
+                    <CachedOutlinedIcon  fontSize='small' />
+                  </button>
+                  <span className={prop.isReposted[prop.post_id] ? 'repostNumber-green': 'repostNumber'}>{prop.rePosts || ""}</span>
+                </div>: null
+        )
+      }
+    }
+
     return(
       <div>
       <div onClick={navigateToPost} className='post' post-id={prop.post_id}>
@@ -337,19 +376,9 @@ export default function EntryPost(prop){
                   </button>
                 </div> : null}
 
-                {prop.repost ? <div className='postButtonContainer'>
-                  <button onClick={rePostBtn} post-id={prop.post_id} className={prop.isReposted[prop.post_id] ? 'repost-btn repost-btn-green' : 'repost-btn'}>
-                    <CachedOutlinedIcon  fontSize='small' />
-                  </button>
-                  <span className={prop.isReposted[prop.post_id] ? 'repostNumber-green': 'repostNumber'}>{prop.rePosts || ""}</span>
-                </div>: null}
+                {<RepostButton />}
 
-                {prop.like ? <div className='postButtonContainer'>
-                  <button post-id={prop.post_id} onClick={likeBtn} className={prop.isLiked[prop.post_id] ? 'like-btn like-btn-red' : 'like-btn'}>
-                    {prop.isLiked[prop.post_id] ? <FavoriteIcon fontSize='small' /> : <FavoriteBorderOutlinedIcon fontSize='small' />}
-                  </button>
-                    <span className={prop.isLiked[prop.post_id] ? 'likeNumber-red': 'likeNumber'}>{prop.likes || ""}</span>
-                </div> : null }
+                {<LikeButton />}
                 
                { prop.isDelete[prop.post_id] ? 
                <div className='postButtonContainer'>

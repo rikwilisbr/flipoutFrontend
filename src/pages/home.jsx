@@ -10,7 +10,7 @@ import SideNav from '../components/SideNav';
 import { TextareaAutosize } from '@mui/material';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
-import {MoonLoader} from 'react-spinners'
+import {MoonLoader, PulseLoader} from 'react-spinners'
 
 export default function Home() {
 
@@ -33,6 +33,8 @@ export default function Home() {
   const [isDelete, setIsDelete] = useState({})
 
   const [loading, setLoading] = useState(true)
+
+  const [formLoading, setFormLoading] = useState(false)
 
   useEffect(()=>{
     socket.emit('setup', user)
@@ -220,7 +222,9 @@ export default function Home() {
       }
     }
 
-    async function makeThePost(){
+    async function makeThePost(event){
+      event.preventDefault();
+      setFormLoading(true)
       const postedBy = {
         firstname: user.firstname,
         lastname: user.lastname,
@@ -238,6 +242,12 @@ export default function Home() {
       "Access-Control-Allow-Origin": "*",
       "user-id": localStorage.getItem('user-id')
          }
+      }).then((response)=>{
+        if(response.status === 201){
+          window.location.reload()
+        } else (
+          alert('error')
+        )
       })
 
       setLen(true)
@@ -269,6 +279,7 @@ export default function Home() {
                   <form>
                   <TextareaAutosize maxLength="1200" maxRows={10} className='postAreaText' onChange={getPostText} placeholder='What is happening?' />
                   <button disabled={len} onClick={makeThePost}>Post</button>
+                  <PulseLoader cssOverride={{display: "block", marginLeft:"1.5rem"}} size={"10"} color="#ff000073" loading={formLoading} />
                   </form>
                 </div>
               </div>

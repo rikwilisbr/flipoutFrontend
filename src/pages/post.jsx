@@ -10,7 +10,7 @@ import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import { TextareaAutosize } from '@mui/material';
 import MobileNav from '../components/mobileNav';
-import {MoonLoader} from 'react-spinners'
+import {MoonLoader, PulseLoader} from 'react-spinners'
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -35,6 +35,7 @@ export default function Post() {
     const [isDelete, setIsDelete] = useState({})
 
     const [loading, setLoading] = useState(true)
+    const [formLoading, setFormLoading] = useState(false)
 
   function getDelete(){
     const ids = document.querySelectorAll('[post-id]')
@@ -242,7 +243,9 @@ export default function Post() {
         }
       }
   
-      async function replyBtn() {
+      async function replyBtn(event) {
+        event.preventDefault()
+        setFormLoading(true)
         const data = {
             reply: inputText,
             postid: postid,
@@ -258,6 +261,13 @@ export default function Post() {
         "Access-Control-Allow-Origin": "*",
         "user-id": localStorage.getItem('user-id')
            }
+        }).then((response)=>{
+          if(response.status === 200){
+            return window.location.reload()
+          } else {
+            alert('error')
+            return window.location.reload()
+          }
         })
       }
 
@@ -324,6 +334,7 @@ export default function Post() {
                             <form>
                             <TextareaAutosize maxLength="600" maxRows={10} className='postAreaText' onChange={getPostText} placeholder='Type your comment here' />
                             <button disabled={len} onClick={replyBtn}>Post</button>
+                            <PulseLoader cssOverride={{display: "block", marginLeft:"1.5rem"}} size={"10"} color="#ff000073" loading={formLoading} />
                             </form>
                           </div>
                         </div>

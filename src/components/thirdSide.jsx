@@ -40,7 +40,7 @@ export default function ThirdSide(prop) {
         <div className='thirdSideHeaderContainer'>
             <h1>People to follow</h1>
         </div>
-         <MoonLoader size='40' cssOverride={override} color="#FF0000" loading={loading} /> 
+         <MoonLoader size='40px' cssOverride={override} color="#FF0000" loading={loading} /> 
         <div className='thirdSideBodyContainer'>
             {error? <span>can't find anybody :/ </span> :
             suggestUsers.map((prop, index)=>{
