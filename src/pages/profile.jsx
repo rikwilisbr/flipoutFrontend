@@ -66,6 +66,8 @@ export default function Post() {
       lastname: ''
     })
 
+    const [editButtonDisable, setEditButtonDisable] = useState(true)
+
     
 
     useEffect(() => {
@@ -513,17 +515,27 @@ export default function Post() {
       }
     }
     
-    if(editUserValues.firstname.length > 0){
+    if(editUserValues.firstname.length > 0 && editUserValues.lastname.length > 0){
       await axios.put(process.env.REACT_APP_APIURL+'/api/update/user/'+user.id, editUserValues ,fetchConfig).then((response)=>{
         if(response.status === 200){
           window.location.reload()
         }
       })
     } else {
-      alert('firstname box can not be empty')
+      alert('firstname and lastname box can not be empty')
     }
-   
+
   }
+
+  useEffect(()=>{
+    if(editUserValues.firstname.length > 0 && editUserValues.lastname.length > 0){
+      setEditButtonDisable(false)
+    } else {
+      setEditButtonDisable(true)
+    }
+  },[editUserValues])
+
+  
   return (
     <div className='container-fluid home-area'>
       <div className='row'>
@@ -669,7 +681,7 @@ export default function Post() {
                           </div>
                           <div className="modal-footer">
                             <button onClick={()=>window.location.reload()} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button onClick={updateEditUser} type="button" className="btn btn-primary">Save</button>
+                            <button onClick={updateEditUser} disabled={editButtonDisable} type="button" className="btn btn-primary">Save</button>
                           </div>
                         </div>
                       </div>
