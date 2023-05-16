@@ -14,7 +14,7 @@ import "cropperjs/dist/cropper.css";
 import SideNav from '../components/SideNav';
 import ThirdSide from '../components/thirdSide';
 import MobileNav from '../components/mobileNav';
-import {MoonLoader} from 'react-spinners'
+import {MoonLoader, ScaleLoader} from 'react-spinners'
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -60,6 +60,10 @@ export default function Post() {
     const [cropper2, setCropper2] = useState()
 
     const [loading, setLoading] = useState(true)
+
+    const [postsLoading, setPostsLoading] = useState(false)
+
+    const [followLoading, setFollowLoading] = useState(false)
 
     const [editUserValues, setEditUserValues] = useState({
       firstname: '',
@@ -112,6 +116,7 @@ export default function Post() {
   }
 
     async function follow(){
+      setFollowLoading(true)
       const myId = localStorage.getItem('user-id')
       await axios.put(process.env.REACT_APP_APIURL+'/api/followers/profile/'+username+'/'+myId, {
         headers: {
@@ -156,7 +161,7 @@ export default function Post() {
         const myUser = userRes.data    
   
         if(myUser) setUser(myUser)
-  
+        setFollowLoading(false)
     }
 
     function getDelete(){
@@ -342,6 +347,8 @@ export default function Post() {
 
     async function tabChange(event, newValue){
       event.stopPropagation()
+      setPosts([])
+      setPostsLoading(true)
       if(newValue === 'post'){
         setTabValue('post')
         setTabBoolean(true)
@@ -354,6 +361,7 @@ export default function Post() {
           }
         })
       setPosts(postsResponse.data)
+      setPostsLoading(false)
       } else {
         setTabValue('reply')
         setTabBoolean(false)
@@ -366,6 +374,7 @@ export default function Post() {
           }
         })
       setPosts(postsResponse.data)
+      setPostsLoading(false)
 
       const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/home', {
             headers: {
@@ -503,6 +512,13 @@ export default function Post() {
     marginTop: "2rem",
   };
 
+  const followOverride = {
+    display: 'inline-block',
+    padding: '0.1rem',
+    marginTop: '1rem',
+    marginLeft: '1rem'
+  }
+
   async function updateEditUser(){
     const fetchConfig = {
       method: 'PUT',
@@ -565,7 +581,7 @@ export default function Post() {
                 </div>
               </div>
                 {isloggedUser ? 
-                <div className='profileButtonsContainer'> <button className='profileMessageButton' onClick={messageButton}><MailOutlineIcon /></button> <button onClick={follow} className={isFollowing ? 'profileFollowingButton' : 'profileFollowButton'}>{isFollowing ? 'Following' : 'Follow'}</button></div> : 
+                 <div className='profileButtonsContainer'> <button className='profileMessageButton' onClick={messageButton}><MailOutlineIcon /></button> {followLoading ?  <ScaleLoader height={20} width={2} cssOverride={followOverride} color='#eb535381'/> : <button onClick={follow} className={isFollowing ? 'profileFollowingButton' : 'profileFollowButton'}>{isFollowing ? 'Following' : 'Follow'}</button>}</div> : 
                 <div className='profileButtonsContainer'> <button data-bs-toggle='modal' data-bs-target='#EditNameModal' className='profileEditButton'>Edit profile</button></div>
                 }
                 <div className='profileUserDetails'>
@@ -702,6 +718,7 @@ export default function Post() {
                 </div>
             </div>
             <div>
+                  <MoonLoader size={40} cssOverride={override} color="#FF0000" loading={postsLoading} />
                   {tabBoolean ? posts.map((prop, index)=>{
                     return(
                       <ProfileEntryPost 
