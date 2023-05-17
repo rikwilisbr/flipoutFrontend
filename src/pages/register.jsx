@@ -36,7 +36,7 @@ export default function Register() {
     }
   }
 
-  function checkingPass(event){
+  function submitForm(event){
 
      if(firstPass === secondPass){
         const data_ = formData;
@@ -53,7 +53,7 @@ export default function Register() {
             .then((response) => response.json())
             .then((data) => {
                 if(data.register === true){
-                    navigate("/sucessRegister")
+                    navigate("/success")
                 } else(
                     setErrorMessage(data.error)
                 )
@@ -117,7 +117,7 @@ export default function Register() {
                   </div>
                 </div>
                 <div>
-                <button className='btn btn-dark register-entry-btn' onClick={ checkingPass } disabled={emailCheck}> Register </button>
+                <button className='btn btn-dark register-entry-btn' onClick={ submitForm } disabled={emailCheck}> Register </button>
                 </div>
                   
               </form>

@@ -187,8 +187,15 @@
     color: #191919;
     font-weight: 500;
     font-size: 18px;
+    
 }
 
+.resendEmailLink {
+    color: #00b7ff;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+}
 
 /* home page */
 

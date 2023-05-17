@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import React from 'react'
 import { useNavigate } from "react-router-dom"
 import { PulseLoader } from "react-spinners"
+import { RecoveryData } from "../contexts/recoveryPassContext"
 
-export default function Login() {
+export default function RecoveryPassPage() {
 
+  const { value, setValue } = useContext(RecoveryData);  
   const [formData, setFormData]= useState({ 
     email: '',
-    password: ''
   })
 
   const [errorMessage, setErrorMessage] = useState()
@@ -43,9 +44,13 @@ export default function Login() {
   },[])
 
   function submitForm(){
-        const data_ = formData
-   
-        fetch(process.env.REACT_APP_APIURL+'/login', {
+        const data_ = {
+            email: formData.email,
+            otp: Math.floor(Math.random() * 8999 + 1000)
+        }
+        
+        setLoading(true)
+        fetch(process.env.REACT_APP_APIURL+'/api/recovery/send_email', {
             method: 'POST',
             crossDomain: true,
             headers:{
@@ -57,23 +62,15 @@ export default function Login() {
         })
         .then((response) => response.json())
         .then((data) => {
-            if(data.login === true){
-                localStorage.setItem('token', data.token)
-                localStorage.setItem('user', JSON.stringify(data.user))
-                localStorage.setItem('user-id', data.user.id)
-                setTimeout(() => {
-                    navigate("/home")
-                }, 3000)
-
-                setLoading(true)
-            } else{
+            if(data.sended === true){
+                setValue({email: data_.email, otp: data_.otp})
+                navigate("/recovery/auth")
+                setLoading(false)
+            } else {
                 setErrorMessage(data.error)
+                setLoading(false)
             }
-                
-            
-        })
-
-        
+        }) 
   }
 
   return (
@@ -88,8 +85,8 @@ export default function Login() {
                 </div>
         </div>
         <div className="col-8 login-paper">
-            <h1>Login to FlipOut</h1>
-            <p className="login-paper-p">Access your account right now!</p>
+            <h1>Recover Your Account</h1>
+            <p className="login-paper-p">Forgot your password? Don't worry, we can help you.</p>
             <p style={{color: 'red'}}>{errorMessage}</p>
                 <div className='inputs'>
                 <form className='entry-form' onSubmit={(e)=> e.preventDefault()}>
@@ -97,12 +94,8 @@ export default function Login() {
                         <p className="entry-email-p">Your email:</p>
                         <input className='entry-input' type='email' placeholder='example@email.com' onChange={(e) => setFormData((prev)=> { return {...prev, email: e.target.value}})} required></input>
                     </div>
-                    <div>
-                        <p className="entry-pass-p">Your password:</p>
-                        <input className='entry-input' type='password' placeholder='password' onChange={(e) => setFormData((prev)=> { return {...prev, password: e.target.value}})} required></input>
-                    </div>
                     <div className="entry-btn-container">
-                    <button className='entry-btn' onClick={ submitForm } >Login</button>
+                    <button className='entry-btn' onClick={ submitForm }>Next</button>
                     </div>
                 </form>
                 </div>
@@ -115,11 +108,7 @@ export default function Login() {
                         loading={loading}
                         cssOverride={override}
                     />
-                    <a href='/recovery'>Forgot password?</a>
-                    <div className="mobileSingUp">
-                        <span>Don't have a account? </span>
-                        <a href='/register'>Sing Up</a>
-                    </div>
+                    
                     
                 </div>
 
