@@ -26,8 +26,8 @@ export default function SideNav(prop) {
   return (
     <div className='nav col-2'>
             <nav>
-              <a href='/'><WavesIcon sx={{color: 'red', fontSize: 50}}/></a>
-              <a href='/home'><HomeIcon sx={{color: 'white'}} fontSize='large'/><span>Home</span> </a>
+              <a href='/'><img className='sideNavLogo' src='https://i.imgur.com/BK8OWtX.png' alt='logo'/></a>
+              <a href='/home'><HomeIcon sx={{color: 'white'}} fontSize='large'/><span style={{marginLeft: '5px'}}>Home</span> </a>
               <a href='/search'><SearchIcon sx={{color: 'white'}} fontSize='large'/> <span>Search</span></a>
               <a href='/notifications'>
               <NotificationsIcon sx={{color: 'white'}} fontSize='large'/> 

@@ -69,7 +69,7 @@ export default function Register() {
     <div className='container-fluid register-page'>
     <div className="row">
     <div className="col-4 side-paper">
-        <img src='https://i.imgur.com/wMyGVWw.png' className="logo"/>
+        <img src='https://i.imgur.com/3S3tFKN.png' className="logo"/>
             <div className="text-center register-call">
                 <h2 className="welcome-side-paper">Welcome<br/> Back</h2>
                 <p className="register-call-message">Already have a account?</p>

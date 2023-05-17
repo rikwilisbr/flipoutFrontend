@@ -118,20 +118,19 @@
 
 .logo{
     height:auto ;
-    width: 12rem;
+    width: 15rem;
     object-fit: contain;
     display: block;
     margin: 3rem auto;
 }
 
-.register-call{
-    margin-top: 20vh;
-    
-}
-
 .welcome-side-paper{
     font-weight: bold;
     font-size: 3rem;
+}
+
+.register-call{
+    margin-top: -10vh;
 }
 
 .register-call-message{
@@ -213,6 +212,11 @@
     padding-left: 2rem;
 }
 
+.nav .sideNavLogo{
+    height: auto;
+    width: 5rem;
+    margin-left: -1rem;
+}
 
 .nav nav {
     display: flex;
@@ -1389,6 +1393,10 @@
         display: none !important;
     }
 
+    .nav .sideNavLogo{
+        margin-left: 0rem;
+    }
+
     .main-section{
         flex: 1;
     }
@@ -1403,7 +1411,7 @@
     
 }
 
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 620px){
 
     html, body{
         max-height: -webkit-fill-available;
@@ -1412,7 +1420,7 @@
     .nav{
         display: none !important;
     }
-
+    
     .main-section{
         width: 100svw;
         height: 93svh;
@@ -1454,6 +1462,7 @@
 
 }
 
+/*login and register pages*/
 @media only screen and (max-width: 670px){
     .login-paper{
         margin: 5vh auto;
