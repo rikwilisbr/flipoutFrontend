@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {useQuery} from 'react-query';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 //material ui icons
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -187,11 +186,11 @@ export default function NotificationPage() {
 
               {notifications.map((prop, index)=>{
                 return(
-                  <div>
+                  <div key={index}>
                   
                   {prop.isFollow ?
 
-                    <div onClick={()=>navigate('/profile/'+prop.username)} key={index} className={prop.opened ? 'notifyListItem' :'notifyListItem active'}>
+                    <div onClick={()=>navigate('/profile/'+prop.username)}  className={prop.opened ? 'notifyListItem' :'notifyListItem active'}>
                     <div  className='notifyListImageContainer'>
                       <img src={prop.profilePic} alt='UserProfilePic'></img>
                     </div>
@@ -206,7 +205,7 @@ export default function NotificationPage() {
                   
                   :
 
-                  <div onClick={()=>navigate('/posts/'+prop.postId)} key={index} className={prop.opened ? 'notifyListItem ' :'notifyListItem active'}>
+                  <div onClick={()=>navigate('/posts/'+prop.postId)}  className={prop.opened ? 'notifyListItem ' :'notifyListItem active'}>
                     <div  className='notifyListImageContainer'>
                       <img src={prop.profilePic} alt='UserProfilePic'></img>
                     </div>
@@ -222,7 +221,7 @@ export default function NotificationPage() {
                   }
                 </div>
                 )
-              })}
+              }).reverse()}
             </div>
           </div>
 

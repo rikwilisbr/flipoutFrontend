@@ -204,7 +204,6 @@ export default function SearchPosts() {
         getColorRePosts()
         getRePostMessage()
         getDelete()
-        console.log('hi')
       },[posts])
 
       function getSearchText(event){

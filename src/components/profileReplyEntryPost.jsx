@@ -39,7 +39,7 @@ export default function ProfileReplyEntryPost(prop){
               'user': localStorage.getItem('user')
             }
           })
-          console.log(postCallBack.data)
+          
 
           await axios.put(process.env.REACT_APP_APIURL+'/api/post/repost', {
             repost: myRePost
@@ -61,7 +61,7 @@ export default function ProfileReplyEntryPost(prop){
             }
           })
       
-          const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/reply/profile/'+prop.username, {
+          const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/post/reply/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Expose-Headers': 'user-id',
@@ -70,7 +70,7 @@ export default function ProfileReplyEntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-          const currentUserResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+prop.username, {
+          const currentUserResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/user/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Expose-Headers': 'user-id',
@@ -120,7 +120,7 @@ export default function ProfileReplyEntryPost(prop){
           })
       
           try {
-            const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/profile/'+prop.currentUsername, {
+            const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/post/reply/'+prop.currentUsername, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Expose-Headers': 'user-id',
@@ -148,11 +148,11 @@ export default function ProfileReplyEntryPost(prop){
       async function deleteBtn(event){
         event.stopPropagation()
 
-        const deleteResponse = await axios.delete(process.env.REACT_APP_APIURL+'/api/delete/'+prop.post_id)
-        console.log(deleteResponse)
+        await axios.delete(process.env.REACT_APP_APIURL+'/api/delete/'+prop.post_id)
+        
        
         try{
-        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/profile/'+prop.username, {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/post/reply/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Expose-Headers': 'user-id',
@@ -161,7 +161,7 @@ export default function ProfileReplyEntryPost(prop){
           })
           prop.setPosts(postsResponse.data)
 
-        const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+prop.username, {
+        const homeResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/user/'+prop.username, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Expose-Headers': 'user-id',

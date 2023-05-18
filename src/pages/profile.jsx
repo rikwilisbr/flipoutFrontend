@@ -118,7 +118,7 @@ export default function Post() {
     async function follow(){
       setFollowLoading(true)
       const myId = localStorage.getItem('user-id')
-      await axios.put(process.env.REACT_APP_APIURL+'/api/followers/profile/'+username+'/'+myId, {
+      await axios.put(process.env.REACT_APP_APIURL+'/api/profile/followers/'+username+'/'+myId, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -128,7 +128,7 @@ export default function Post() {
       })
       
   
-       await axios.put(process.env.REACT_APP_APIURL+'/api/following/profile/'+username+'/'+myId+'/'+currentUser.id, {
+       await axios.put(process.env.REACT_APP_APIURL+'/api/profile/following/'+username+'/'+myId+'/'+currentUser.id, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -137,7 +137,7 @@ export default function Post() {
         }
       })
   
-      const currentUserRes = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+username, {
+      const currentUserRes = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/user/'+username, {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -303,12 +303,12 @@ export default function Post() {
         }
       }
 
-      const postRes = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+username, fetchConfig)
+      const postRes = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/post/'+username, fetchConfig)
       const myPosts = postRes.data
 
       if(myPosts) setPosts(myPosts)
 
-      const currentUserRes = await axios.get(process.env.REACT_APP_APIURL+'/api/user/profile/'+username, fetchConfig)
+      const currentUserRes = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/user/'+username, fetchConfig)
       const myCurrentUser = currentUserRes.data
    
       if(myCurrentUser) setCurrentUser(myCurrentUser)
@@ -352,7 +352,7 @@ export default function Post() {
       if(newValue === 'post'){
         setTabValue('post')
         setTabBoolean(true)
-        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/profile/'+username, {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/post/'+username, {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -365,7 +365,7 @@ export default function Post() {
       } else {
         setTabValue('reply')
         setTabBoolean(false)
-        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/post/reply/profile/'+username, {
+        const postsResponse = await axios.get(process.env.REACT_APP_APIURL+'/api/profile/post/reply/'+username, {
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
