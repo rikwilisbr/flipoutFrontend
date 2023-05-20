@@ -65,11 +65,11 @@ You can create new posts by simply typing your text and clicking the Post button
 
 #### Post Interactions:
 ##### You can interact with posts through likes, reposts, and replies. Examples below:
-#####Likes:
+##### Likes:
 ![](https://i.imgur.com/dlcTLPo.gif)
-#####Reposts:
+##### Reposts:
 ![](https://i.imgur.com/Xdc1Opw.gif)
-#####Replies:
+##### Replies:
 ![](https://i.imgur.com/d7pBupP.gif)
 
 ### 2. Search
