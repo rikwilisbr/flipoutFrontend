@@ -108,6 +108,10 @@ The profile section gives you the opportunity to customize your profile and inte
 - See all the posts and replies that the profile owner makes
 - Edit your profile changing your name and last name
 
+### 5. Chats
+In the Chats section, you can send messages in real-time with Socket.io. You can create chat groups with all your friends or send private direct messages.
+
+![](https://i.imgur.com/0b5moHh.png)
 
 # Credit to Developers
 #### This software was developed by a single developer:
