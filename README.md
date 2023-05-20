@@ -65,40 +65,32 @@ You can create new posts by simply typing your text and clicking the Post button
 
 #### Post Interactions:
 ##### You can interact with posts through likes, reposts, and replies. Examples below:
-####
 Likes:
 ![](https://i.imgur.com/dlcTLPo.gif)
-####
 Reposts:
 ![](https://i.imgur.com/Xdc1Opw.gif)
-####
 Replies:
 ![](https://i.imgur.com/d7pBupP.gif)
 
 ### 2. Search
 #### Searching for Users
 You can search for users by typing the @username.
-####
 ![](https://i.imgur.com/Meg6RMu.gif)
 
 #### Searching for Posts
 You can search for posts by typing the post content text.
-####
 ![](https://i.imgur.com/D8xw8Sl.gif)
 
 ### 3. Notifications
 You can see all notifications sent to you in this section.
-####
 ![](https://i.imgur.com/3mGUAln.png)
 
 #### Mark as Read
 You can mark notifications as read by clicking the check button, as shown in the example below.
-####
 ![](https://i.imgur.com/VvEXiUS.gif)
 
 ### 4. Profile
 The profile section gives you the opportunity to customize your profile and interact directly with each user. See more in the examples below:
-####
 ![](https://i.imgur.com/qJdVXm2.png)
 
 #### In the Profile Section, you can:
@@ -106,7 +98,8 @@ The profile section gives you the opportunity to customize your profile and inte
 - Change the profile and cover photo
 - Send a direct message to the profile owner
 - See all the posts and replies that the profile owner makes
-- Edit your profile changing your first name and last name
+- Edit your profile changing your name and last name
+
 
 # Credit to Developers
 #### This software was developed by a single developer:
