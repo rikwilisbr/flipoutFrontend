@@ -58,7 +58,7 @@ You can recover your account by changing your password with our Nodemailer syste
 ![](https://i.imgur.com/oWBHcCb.png)
 
 ## 3. Inside FlipOut
-With FlipOut, you have several tools to interact with your friends. Here are some examples listed below:
+With FlipOut, you have several tools to interact with your friends. Here are some examples:
 
 ### 1. Posts
 #### Creating New Posts
